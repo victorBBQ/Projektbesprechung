@@ -1,8 +1,6 @@
 ---
-// src/components/Navbar.astro
 const { lang = "de" } = Astro.props;
 
-// Obtenemos la base de la URL automáticamente (será "/Projektbesprechung/" en GitHub)
 const base = import.meta.env.BASE_URL;
 
 const languages = [
@@ -17,30 +15,35 @@ const languages = [
 const currentLang = languages.find((l) => l.code === lang) || languages.find((l) => l.code === "de");
 
 const t = {
-  es: { home: "Inicio", about: "Sobre mí", contact: "Contacto", current: "Actual" },
-  en: { home: "Home", about: "About", contact: "Contact", current: "Current" },
-  de: { home: "Startseite", about: "Über mich", contact: "Kontakt", current: "Aktuell" },
-  fa: { home: "صفحه اصلی", about: "درباره من", contact: "تماس", current: "فعلی" },
-  ru: { home: "Главная", about: "Обо мне", contact: "Контакт", current: "Текущий" }
+  es: { home: "Inicio", modules: "Módulos", mindmap: "Mindmap" },
+  en: { home: "Home", modules: "Modules", mindmap: "Mindmap" },
+  de: { home: "Start", modules: "Module", mindmap: "Mindmap" },
+  ru: { home: "Главная", modules: "Модули", mindmap: "Карта" },
+  fa: { home: "صفحه اصلی", modules: "ماژول‌ها", mindmap: "نقشه ذهنی" }
 };
 
 const nav = t[lang] || t.de;
 ---
 
-<nav class="bg-white border-b border-gray-200 relative z-50">
-  <div class="max-w-5xl mx-auto px-4">
+<nav class="sticky top-0 z-[100] w-full bg-white/80 backdrop-blur-md border-b border-gray-200 transition-all duration-300">
+    <div class="max-w-5xl mx-auto px-4">
     <div class="flex justify-between h-16 items-center">
       <a href={`${base}${lang}/`} class="font-bold text-xl text-purple-600 hover:opacity-80 transition">
         MiSitio
       </a>
 
       <div class="hidden md:flex space-x-8 items-center">
-        <a href={`${base}${lang}/`} class="hover:text-purple-600 transition-colors font-medium">
-          {nav.home}
-        </a>
-        <a href="#" class="hover:text-purple-600 transition-colors font-medium">
-          {nav.about}
-        </a>
+        <a href={`${base}${lang}/#home`} class="hover:text-purple-600 transition-colors">
+    {nav.home}
+  </a>
+
+  <a href={`${base}${lang}/#portfolio`} class="hover:text-purple-600 transition-colors">
+    {nav.modules}
+  </a>
+
+  <a href={`${base}${lang}/#mindmap`} class="hover:text-purple-600 transition-colors">
+    {nav.mindmap}
+  </a>
 
         <div class="relative inline-block text-left">
           <button

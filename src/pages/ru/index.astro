@@ -1,32 +1,108 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import TiltCard from '../../components/TiltCard.astro';
+
+const lang = "ru";
+
+const t = {
+  ru: {
+    heroTitle: "Добро пожаловать в",
+    heroSub: "Цифровой образовательный сектор для ИТ-специалистов",
+    heroDesc: "Мы предоставляем ИТ-контент, ориентированный на обучение Fachinformatiker. Высокопроизводительный, современный и практичный.",
+    learnMore: "Узнать больше",
+    contact: "Контакт",
+    portfolioTitle: "Наши курсы (Учебный план)",
+    portfolioSub: "Изучите наши модули для специалистов по системной интеграции",
+    
+    m1T: "Основы ПК", m1D: "Hardware и технический английский",
+    m2T: "Экономика и право", m2D: "Основные квалификации IHK",
+    m3T: "Сети", m3D: "Маршрутизация, коммутация и OSI",
+    m4T: "Операционные системы", m4D: "Администрирование Linux и Shell",
+    m5T: "Программирование", m5D: "Java, логика и алгоритмы",
+    m6T: "Базы данных", m6D: "Проектирование SQL и управление",
+    m7T: "Системная инженерия", m7D: "Windows Server и AD",
+    m8T: "Управление проектами", m8D: "Agile, Scrum и планирование",
+    m9T: "Системная интеграция", m9D: "Специализированное техническое обучение",
+    m10T: "Подготовка к экзамену", m10D: "Успешная сдача экзамена IHK"
+  }
+};
+
+const nav = t[lang];
 ---
 
-<Layout title="Добро пожаловать" lang="ru">
-  <section class="py-24 text-center px-4 bg-gradient-to-b from-white to-gray-50">
-    <div class="max-w-3xl mx-auto">
-      <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 tracking-tight">
-        Добро пожаловать на мой <span class="text-purple-600">сайт</span>
-      </h1>
-      
-      <p class="mt-6 text-xl text-gray-600 leading-relaxed">
-        Это высокопроизводительный статический сайт, созданный с помощью Astro и Tailwind CSS. Быстрый, современный и многоязычный.
-      </p>
+<Layout title="BEBECUTE Portfolio" lang="ru">
+  <section id="portfolio" class="py-20 max-w-6xl mx-auto px-4">
+  <div class="mb-12 text-center">
+    <h2 class="text-4xl font-black italic text-gray-900">BEBECUTE <span class="text-purple-600">Learning</span></h2>
+    <p class="text-gray-500 mt-2 italic">{nav.portfolioSub}</p>
+  </div>
 
-      <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-        <a 
-          href="#projects" 
-          class="bg-purple-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-        >
-          Узнать больше
-        </a>
-        <a 
-          href="#contact" 
-          class="bg-white text-gray-700 border border-gray-200 px-8 py-4 rounded-xl font-bold hover:bg-gray-50 transition-all duration-300"
-        >
-          Связаться со мной
-        </a>
-      </div>
-    </div>
-  </section>
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">
+    
+    <TiltCard 
+      modNumber="1" title={nav.m1T} desc={nav.m1D} 
+      colorClass="bg-gradient-to-br from-purple-500 to-indigo-600"
+      emoji="💻"
+    />
+
+    <TiltCard 
+      modNumber="2" title={nav.m2T} desc={nav.m2D} 
+      colorClass="bg-blue-500"
+      emoji="⚖️"
+    />
+
+    <TiltCard 
+      modNumber="3" title={nav.m3T} desc={nav.m3D} 
+      colorClass="bg-emerald-500"
+      emoji="🌐"
+      gridClass="md:col-span-2"
+    />
+
+    <TiltCard 
+      modNumber="4" title={nav.m4T} desc={nav.m4D} 
+      colorClass="bg-orange-500"
+      emoji="🐧"
+    />
+
+    <TiltCard 
+      modNumber="5" title={nav.m5T} desc={nav.m5D} 
+      colorClass="bg-gradient-to-br from-purple-700 to-pink-600"
+      emoji="🚀"
+      gridClass="md:col-span-2 md:row-span-2"
+    />
+
+    <TiltCard 
+      modNumber="6" title={nav.m6T} desc={nav.m6D} 
+      colorClass="bg-gray-800"
+      emoji="📊"
+    />
+
+    <TiltCard 
+      modNumber="7" title={nav.m7T} desc={nav.m7D} 
+      colorClass="bg-sky-400"
+      emoji="🪟"
+    />
+
+    <TiltCard 
+      modNumber="8" title={nav.m8T} desc={nav.m8D} 
+      colorClass="bg-pink-400"
+      emoji="📅"
+    />
+
+    <TiltCard 
+      modNumber="9" title={nav.m9T} desc={nav.m9D} 
+      colorClass="bg-emerald-600"
+      emoji="🏗️"
+      gridClass="md:col-span-2"
+    />
+
+    <TiltCard 
+      modNumber="10" title={nav.m10T} desc={nav.m10D} 
+      colorClass="bg-yellow-400"
+      emoji="🎓"
+      gridClass="md:col-span-2"
+    />
+
+  </div>
+</section>
 </Layout>
