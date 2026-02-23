@@ -1,108 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import TiltCard from '../../components/TiltCard.astro';
-
-const lang = "fa";
-
-const t = {
-  fa: {
-    heroTitle: "خوش آمدید به",
-    heroSub: "بخش آموزش دیجیتال برای متخصصان فناوری اطلاعات",
-    heroDesc: "ما محتوای IT را با تمرکز بر آموزش Fachinformatiker ارائه می‌دهیم. با کارایی بالا، مدرن و عمل‌گرا.",
-    learnMore: "بیشتر بدانید",
-    contact: "تماس",
-    portfolioTitle: "پیشنهاد دوره ما (برنامه آموزشی)",
-    portfolioSub: "ماژول‌های ما را برای متخصصان یکپارچه‌سازی سیستم بررسی کنید",
-    
-    m1T: "مبانی کامپیوتر", m1D: "سخت‌افزار و انگلیسی تخصصی",
-    m2T: "اقتصاد و مطالعات اجتماعی", m2D: "شایستگی‌های اصلی IHK",
-    m3T: "شبکه‌ها", m3D: "مسیریابی، سوئیچینگ و OSI",
-    m4T: "سیستم‌های عامل", m4D: "مدیریت لینوکس و شل",
-    m5T: "برنامه‌نویسی", m5D: "جاوا، منطق و الگوریتم‌ها",
-    m6T: "پایگاه داده", m6D: "طراحی SQL و مدیریت",
-    m7T: "مهندسی سیستم‌های IT", m7D: "ویندوز سرور و AD",
-    m8T: "مدیریت پروژه", m8D: "اجایل، اسکرام و برنامه‌ریزی",
-    m9T: "یکپارچه‌سازی سیستم", m9D: "آموزش فنی تخصصی",
-    m10T: "آمادگی آزمون", m10D: "موفقیت در آزمون نهایی IHK"
-  }
-};
-
-const nav = t[lang];
+import PageTemplate from '../../components/PageTemplates.astro';
+import { languages } from '../../data/languages.js';
 ---
-
-<Layout title="BEBECUTE Portfolio" lang="fa">
-  <section id="portfolio" class="py-20 max-w-6xl mx-auto px-4">
-  <div class="mb-12 text-center">
-    <h2 class="text-4xl font-black italic text-gray-900">BEBECUTE <span class="text-purple-600">Learning</span></h2>
-    <p class="text-gray-500 mt-2 italic">{nav.portfolioSub}</p>
-  </div>
-
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">
-    
-    <TiltCard 
-      modNumber="1" title={nav.m1T} desc={nav.m1D} 
-      colorClass="bg-gradient-to-br from-purple-500 to-indigo-600"
-      emoji="💻"
-    />
-
-    <TiltCard 
-      modNumber="2" title={nav.m2T} desc={nav.m2D} 
-      colorClass="bg-blue-500"
-      emoji="⚖️"
-    />
-
-    <TiltCard 
-      modNumber="3" title={nav.m3T} desc={nav.m3D} 
-      colorClass="bg-emerald-500"
-      emoji="🌐"
-      gridClass="md:col-span-2"
-    />
-
-    <TiltCard 
-      modNumber="4" title={nav.m4T} desc={nav.m4D} 
-      colorClass="bg-orange-500"
-      emoji="🐧"
-    />
-
-    <TiltCard 
-      modNumber="5" title={nav.m5T} desc={nav.m5D} 
-      colorClass="bg-gradient-to-br from-purple-700 to-pink-600"
-      emoji="🚀"
-      gridClass="md:col-span-2 md:row-span-2"
-    />
-
-    <TiltCard 
-      modNumber="6" title={nav.m6T} desc={nav.m6D} 
-      colorClass="bg-gray-800"
-      emoji="📊"
-    />
-
-    <TiltCard 
-      modNumber="7" title={nav.m7T} desc={nav.m7D} 
-      colorClass="bg-sky-400"
-      emoji="🪟"
-    />
-
-    <TiltCard 
-      modNumber="8" title={nav.m8T} desc={nav.m8D} 
-      colorClass="bg-pink-400"
-      emoji="📅"
-    />
-
-    <TiltCard 
-      modNumber="9" title={nav.m9T} desc={nav.m9D} 
-      colorClass="bg-emerald-600"
-      emoji="🏗️"
-      gridClass="md:col-span-2"
-    />
-
-    <TiltCard 
-      modNumber="10" title={nav.m10T} desc={nav.m10D} 
-      colorClass="bg-yellow-400"
-      emoji="🎓"
-      gridClass="md:col-span-2"
-    />
-
-  </div>
-</section>
-</Layout>
+<PageTemplate nav={languages.fa} />

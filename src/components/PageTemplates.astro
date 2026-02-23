@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import InfiniteCarousel from './InfiniteCarousel.astro';
+
+const { nav } = Astro.props;
+
+const modulesData = Array.from({ length: 14 }, (_, i) => {
+  const num = i + 1;
+  const colors = ["bg-purple-600", "bg-blue-500", "bg-emerald-500", "bg-orange-500", "bg-pink-600", "bg-gray-800", "bg-sky-500", "bg-indigo-600", "bg-emerald-600", "bg-red-500", "bg-orange-600", "bg-cyan-600", "bg-blue-700", "bg-yellow-500"];
+  const emojis = ["ℹ️", "🔢", "📡", "🧠", "🔌", "🌐", "☁️", "📍", "🖥️", "💾", "💿", "💻", "📊", "🛡️"];
+  
+  return {
+    title: nav[`m${num}T`],
+    desc: nav[`m${num}D`],
+    color: colors[i],
+    emoji: emojis[i],
+    label: nav.modLabel
+  };
+});
+---
+
+<Layout title="BEBECUTE Portfolio" lang={nav.lang}>
+  <section id="home" class=" bg-whiterelative pt-32 pb-20 min-h-screen flex items-center overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <span class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-widest text-purple-600 uppercase bg-purple-100 rounded-full">
+        {nav.heroBadge}
+      </span>
+      
+      <h1 class="text-5xl md:text-7xl font-black text-gray-900 mb-6 italic tracking-tighter">
+        BEBE<span class="text-purple-600">CUTE</span>
+      </h1>
+      
+      <p class="max-w-2xl mx-auto text-xl text-gray-600 leading-relaxed mb-10">
+        {nav.heroDesc}
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#portfolio" class="px-8 py-4 bg-purple-600 text-white font-bold rounded-2xl hover:bg-purple-700 transition-all shadow-lg shadow-purple-200">
+          {nav.btnPortfolio}
+        </a>
+        <a href="#mindmap" class="px-8 py-4 bg-white text-gray-700 border border-gray-200 font-bold rounded-2xl hover:bg-gray-50 transition-all">
+          {nav.btnMindmap}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" class=" bg-white py-20 min-h-screen flex flex-col justify-center overflow-hidden bg-gray-50">
+    <div class="mb-12 text-center px-4">
+      <h2 class="text-4xl font-black italic text-gray-900">BEBECUTE <span class="text-purple-600">Learning</span></h2>
+      <p class="text-gray-500 mt-2 italic">{nav.portfolioSub}</p>
+    </div>
+
+    <InfiniteCarousel modules={modulesData} />
+  </section>
+
+  <section id="mindmap" class="py-20 min-h-screen flex flex-col justify-center items-center bg-white">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-8 italic">MINDMAP <span class="text-purple-600">BEBECUTE</span></h2>
+        <div class="bg-white p-4 rounded-3xl shadow-xl border border-gray-200">
+          <img src={`${import.meta.env.BASE_URL}mindmap.png`} alt="Mindmap" class="rounded-2xl mx-auto" />
+        </div>
+      </div>
+  </section>
+</Layout>

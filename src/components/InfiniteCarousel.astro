@@ -1,0 +1,212 @@
+---
+import TiltCard from './TiltCard.astro';
+
+interface Props {
+  modules: Array<{
+    title: string;
+    desc: string;
+    color: string;
+    emoji: string;
+    label: string;
+  }>;
+}
+
+const { modules } = Astro.props;
+const tripleModules = [...modules, ...modules, ...modules];
+---
+
+<div class="carousel-wrapper group">
+  <button id="prevBtn" class="nav-btn left-2 md:left-4" aria-label="Previous">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+  </button>
+
+  <div class="carousel-viewport">
+    <div class="carousel-track" id="track">
+      {tripleModules.map((mod, index) => (
+        <div class="carousel-item">
+          <TiltCard 
+            modNumber={(index % modules.length + 1).toString()}
+            title={mod.title}
+            desc={mod.desc}
+            colorClass={mod.color}
+            emoji={mod.emoji}
+            label={mod.label}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <button id="nextBtn" class="nav-btn right-2 md:right-4" aria-label="Next">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+  </button>
+</div>
+
+<style>
+  .carousel-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: visible;
+  }
+
+  .carousel-viewport {
+    width: 100%;
+    overflow: hidden;
+    padding: 4rem 0;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .carousel-track {
+    display: flex;
+    width: max-content;
+    gap: 1.5rem;
+    will-change: transform;
+  }
+
+  .carousel-item {
+    width: 380px;
+    height: 350px;
+    flex-shrink: 0;
+  }
+
+  .nav-btn {
+    position: absolute;
+    z-index: 60;
+    background: white;
+    border: 3px solid #000;
+    color: #000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 4px 4px 0px #000;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    opacity: 0;
+  }
+
+  .carousel-wrapper:hover .nav-btn {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .carousel-item {
+      width: 75vw; 
+      height: 350px;
+    }
+    .carousel-track {
+      gap: 5vw;
+    }
+    .carousel-viewport {
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+    .nav-btn {
+      width: 44px;
+      height: 44px;
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  const track = document.getElementById('track');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const wrapper = document.querySelector('.carousel-wrapper');
+
+  let currentX = 0;
+  let isPaused = false;
+  let isMovingManual = false;
+  const speed = 0.8;
+  
+  const isMobile = () => window.innerWidth <= 768;
+
+  const getStepSize = () => {
+    const item = track.querySelector('.carousel-item');
+    if (!item) return 404;
+    const style = window.getComputedStyle(track);
+    const gap = parseFloat(style.gap) || 0;
+    return (item as HTMLElement).offsetWidth + gap;
+  };
+
+  const initPosition = () => {
+    if (!track) return;
+    const step = getStepSize();
+    const modulesCount = track.children.length / 3;
+    
+    const offset = isMobile() ? (window.innerWidth - (track.querySelector('.carousel-item') as HTMLElement).offsetWidth) / 2 : 0;
+    
+    currentX = -(step * modulesCount) + offset;
+    track.style.transform = `translateX(${currentX}px)`;
+  }
+
+  setTimeout(initPosition, 100);
+
+  function animate() {
+    if (!isMobile() && !isPaused && !isMovingManual && track) {
+      currentX -= speed;
+      const step = getStepSize();
+      const modulesCount = track.children.length / 3;
+      const trackLimit = step * modulesCount;
+
+      if (Math.abs(currentX) >= trackLimit * 2) {
+        currentX = -trackLimit;
+      }
+      track.style.transform = `translateX(${currentX}px)`;
+    }
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+
+  wrapper?.addEventListener('mouseenter', () => isPaused = true);
+  wrapper?.addEventListener('mouseleave', () => isPaused = false);
+
+  const manualMove = (direction) => {
+    if (!track || isMovingManual) return;
+    
+    isMovingManual = true;
+    const step = getStepSize();
+    
+    currentX += direction * step;
+
+    track.style.transition = "transform 0.5s cubic-bezier(0.19, 1, 0.22, 1)";
+    track.style.transform = `translateX(${currentX}px)`;
+
+    setTimeout(() => {
+      if (track) {
+        track.style.transition = "none";
+        isMovingManual = false;
+        
+        const modulesCount = track.children.length / 3;
+        const trackLimit = step * modulesCount;
+        
+        if (Math.abs(currentX) < trackLimit * 0.5) {
+            currentX -= trackLimit;
+            track.style.transform = `translateX(${currentX}px)`;
+        } else if (Math.abs(currentX) > trackLimit * 2.5) {
+            currentX += trackLimit;
+            track.style.transform = `translateX(${currentX}px)`;
+        }
+      }
+    }, 500);
+  };
+
+  prevBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    manualMove(1);
+  });
+  nextBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    manualMove(-1);
+  });
+
+  window.addEventListener('resize', initPosition);
+</script>

@@ -1,5 +1,4 @@
 ---
-// src/components/Footer.astro
 const { lang = "de" } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const year = new Date().getFullYear();
@@ -15,7 +14,7 @@ const t = {
 const nav = t[lang] || t.de;
 ---
 
-<footer class="bg-white border-t border-gray-200 pt-12 pb-8 mt-20">
+<footer class="bg-gray-50 border-t border-gray-200 pt-12 pb-8 mt-20">
   <div class="max-w-5xl mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
       
