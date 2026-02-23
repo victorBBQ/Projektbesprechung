@@ -1,0 +1,49 @@
+---
+// src/components/Footer.astro
+const { lang = "de" } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const year = new Date().getFullYear();
+
+const t = {
+  es: { rights: "Todos los derechos reservados", made: "Hecho con ternura por aprendices de BEBECUTE Hamburgo", about: "Sobre BEBECUTE", fantasy: "Proyecto de Fantasía" },
+  en: { rights: "All rights reserved", made: "Made with cuteness by BEBECUTE Hamburg trainees", about: "About BEBECUTE", fantasy: "Fantasy Project" },
+  de: { rights: "Alle Rechte vorbehalten", made: "Mit Liebe gemacht von BEBECUTE Hamburg Umschülern", about: "Über BEBECUTE", fantasy: "Fantasieprojekt" },
+  fa: { rights: "تمامی حقوق محفوظ است", made: "ساخته شده با عشق توسط کارآموزان BBQ هامبورگ", about: "درباره BEBECUTE", fantasy: "پروژه فانتزی" },
+  ru: { rights: "Все права защищены", made: "Сделано с нежностью студентами BEBECUTE Гамбург", about: "О BEBECUTE", fantasy: "Фантазийный проект" }
+};
+
+const nav = t[lang] || t.de;
+---
+
+<footer class="bg-white border-t border-gray-200 pt-12 pb-8 mt-20">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
+      
+      <div class="space-y-4 text-center md:text-left">
+        <h2 class="text-2xl font-bold text-purple-600 tracking-tighter italic">BEBECUTE ✨</h2>
+        <p class="text-gray-500 text-sm">{nav.fantasy}</p>
+      </div>
+
+      <div class="text-center">
+        <p class="text-gray-600 font-medium">BEBECUTE Hamburg</p>
+        <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+          {nav.made}
+        </p>
+      </div>
+
+      <div class="flex flex-col items-center md:items-end space-y-2">
+        <span class="font-bold text-gray-800">{nav.about}</span>
+        <nav class="flex flex-col items-center md:items-end text-sm text-gray-500 space-y-1">
+          <a href="#" class="hover:text-purple-600 transition-colors">Instagram</a>
+          <a href="#" class="hover:text-purple-600 transition-colors">TikTok</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-100 pt-8 text-center">
+      <p class="text-xs text-gray-400 uppercase tracking-widest">
+        &copy; {year} BEBECUTE LANDPAGE — {nav.rights}
+      </p>
+    </div>
+  </div>
+</footer>

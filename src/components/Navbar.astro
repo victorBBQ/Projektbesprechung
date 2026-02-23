@@ -10,6 +10,8 @@ const languages = [
   { code: "en", label: "English", flag: "🇺🇸" },
   { code: "de", label: "Deutsch", flag: "🇩🇪" },
   { code: "fa", label: "فارسی", flag: "🇮🇷", dir: "rtl" },
+  { code: "ru", label: "Русский", flag: "🇷🇺" },
+
 ];
 
 const currentLang = languages.find((l) => l.code === lang) || languages.find((l) => l.code === "de");
@@ -18,7 +20,8 @@ const t = {
   es: { home: "Inicio", about: "Sobre mí", contact: "Contacto", current: "Actual" },
   en: { home: "Home", about: "About", contact: "Contact", current: "Current" },
   de: { home: "Startseite", about: "Über mich", contact: "Kontakt", current: "Aktuell" },
-  fa: { home: "صفحه اصلی", about: "درباره من", contact: "تماس", current: "فعلی" }
+  fa: { home: "صفحه اصلی", about: "درباره من", contact: "تماس", current: "فعلی" },
+  ru: { home: "Главная", about: "Обо мне", contact: "Контакт", current: "Текущий" }
 };
 
 const nav = t[lang] || t.de;

@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Добро пожаловать" lang="ru">
+  <section class="py-24 text-center px-4 bg-gradient-to-b from-white to-gray-50">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 tracking-tight">
+        Добро пожаловать на мой <span class="text-purple-600">сайт</span>
+      </h1>
+      
+      <p class="mt-6 text-xl text-gray-600 leading-relaxed">
+        Это высокопроизводительный статический сайт, созданный с помощью Astro и Tailwind CSS. Быстрый, современный и многоязычный.
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+        <a 
+          href="#projects" 
+          class="bg-purple-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+        >
+          Узнать больше
+        </a>
+        <a 
+          href="#contact" 
+          class="bg-white text-gray-700 border border-gray-200 px-8 py-4 rounded-xl font-bold hover:bg-gray-50 transition-all duration-300"
+        >
+          Связаться со мной
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
