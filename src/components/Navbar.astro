@@ -27,12 +27,12 @@ const nav = t[lang] || t.de;
 <nav class="bg-white border-b border-gray-200 relative z-50">
   <div class="max-w-5xl mx-auto px-4">
     <div class="flex justify-between h-16 items-center">
-      <a href={`${base}${lang}/`} class="font-bold text-xl text-purple-600 hover:opacity-80 transition">
+      <a href={`${base}/${lang}/`} class="font-bold text-xl text-purple-600 hover:opacity-80 transition">
         MiSitio
       </a>
 
       <div class="hidden md:flex space-x-8 items-center">
-        <a href={`${base}${lang}/`} class="hover:text-purple-600 transition-colors font-medium">
+        <a href={`${base}/${lang}/`} class="hover:text-purple-600 transition-colors font-medium">
           {nav.home}
         </a>
         <a href="#" class="hover:text-purple-600 transition-colors font-medium">
@@ -63,7 +63,7 @@ const nav = t[lang] || t.de;
                 </div>
               ) : (
                 <a 
-                  href={`${base}${l.code}/`} 
+                  href={`${base}/${l.code}/`} 
                   class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition-all border-b border-gray-100 last:border-0"
                   dir={l.dir || 'ltr'}
                 >
