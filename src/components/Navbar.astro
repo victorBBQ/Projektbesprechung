@@ -1,0 +1,100 @@
+---
+const { lang = "de" } = Astro.props;
+
+const languages = [
+  { code: "es", label: "Español", flag: "🇪🇸" },
+  { code: "en", label: "English", flag: "🇺🇸" },
+  { code: "de", label: "Deutsch", flag: "🇩🇪" },
+  { code: "fa", label: "فارسی", flag: "🇮🇷", dir: "rtl" },
+];
+
+const currentLang =
+  languages.find((l) => l.code === lang) ||
+  languages.find((l) => l.code === "de");
+
+const t = {
+  es: { home: "Inicio", about: "Sobre mí", contact: "Contacto", current: "Actual" },
+  en: { home: "Home", about: "About", contact: "Contact", current: "Current" },
+  de: { home: "Startseite", about: "Über mich", contact: "Kontakt", current: "Aktuell" },
+  fa: { home: "صفحه اصلی", about: "درباره من", contact: "تماس", current: "فعلی" }
+};
+
+const nav = t[lang] || t.de;
+---
+
+<nav class="bg-white border-b border-gray-200 relative z-50">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="flex justify-between h-16 items-center">
+      <div class="font-bold text-xl text-purple-600">MiSitio</div>
+
+      <div class="hidden md:flex space-x-8 items-center">
+        <a href={`/${lang}/`} class="hover:text-purple-600">{nav.home}</a>
+        <a href="#" class="hover:text-purple-600">{nav.about}</a>
+
+        <div class="relative inline-block text-left">
+          <button
+            id="lang-menu-btn"
+            class="flex items-center gap-2 bg-gray-100 px-3 py-2 rounded-lg hover:bg-gray-200 transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><circle cx="12" cy="12" r="10"></circle><line
+                x1="2"
+                y1="12"
+                x2="22"
+                y2="12"></line><path
+                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+              ></path></svg
+            >
+            <span class="text-sm font-medium">{currentLang.label}</span>
+          </button>
+
+<div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-xl overflow-hidden">
+  {languages.map((l) => {
+    const isCurrent = l.code === lang;
+    
+    return isCurrent ? (
+      <div class="flex items-center justify-between px-4 py-2 text-sm text-gray-400 bg-gray-50 cursor-default select-none italic" dir={l.dir || 'ltr'}>
+        <div class="flex items-center gap-3">
+          <span>{l.flag}</span> {l.label}
+        </div>
+        <span class="text-[10px] uppercase font-bold tracking-widest">{nav.current}</span>
+      </div>
+    ) : (
+      <a 
+        href={`/${l.code}/`} 
+        class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition-colors"
+        dir={l.dir || 'ltr'}
+      >
+        <span>{l.flag}</span> {l.label}
+      </a>
+    );
+  })}
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById("lang-menu-btn");
+  const dropdown = document.getElementById("lang-dropdown");
+
+  btn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdown?.classList.toggle("hidden");
+  });
+
+  document.addEventListener("click", () => {
+    dropdown?.classList.add("hidden");
+  });
+</script>
