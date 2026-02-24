@@ -3,11 +3,18 @@
 const { lang: propLang } = Astro.props;
 
 const urlPath = Astro.url.pathname;
-const urlLang = urlPath.split('/').filter(Boolean).pop();
-const lang = propLang || urlLang || "de"; 
-
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
+
+// 1. Lógica para detectar el idioma y el sub-camino actual
+const segments = urlPath.replace(base, '').split('/').filter(Boolean);
+// El primer segmento después de la base suele ser el idioma (es, de, en...)
+const urlLang = segments[0]; 
+const lang = propLang || urlLang || "de"; 
+
+// 2. Capturamos todo lo que viene DESPUÉS del idioma
+// Si la URL es /base/es/modul-1, currentSubPath será 'modul-1'
+const currentSubPath = segments.slice(1).join('/');
 
 const languages = [
   { code: "de", label: "Deutsch", flag: "🇩🇪" },
@@ -21,11 +28,11 @@ const activeLangCode = languages.some(l => l.code === lang) ? lang : "de";
 const currentLang = languages.find((l) => l.code === activeLangCode);
 
 const t = {
-  es: { home: "Inicio", modules: "Módulos", mindmap: "Mindmap", current: "Actual" },
-  en: { home: "Home", modules: "Modules", mindmap: "Mindmap", current: "Current" },
-  de: { home: "Start", modules: "Module", mindmap: "Mindmap", current: "Aktiv" },
-  ru: { home: "Главная", modules: "Модули", mindmap: "Карта", current: "Тек." },
-  fa: { home: "صفحه اصلی", modules: "ماژول‌ها", mindmap: "نقشه ذهنی", current: "فعلی" }
+  es: { home: "Inicio", modules: "Módulos", mindmap: "Contacto", current: "Actual" },
+  en: { home: "Home", modules: "Modules", mindmap: "Contact", current: "Current" },
+  de: { home: "Start", modules: "Module", mindmap: "Kontakt", current: "Aktiv" },
+  ru: { home: "Главная", modules: "Модули", mindmap: "Контакты", current: "Тек." },
+  fa: { home: "صفحه اصلی", modules: "ماژول‌ها", mindmap: "تماس", current: "فعلی" }
 };
 
 const nav = t[activeLangCode];
@@ -40,7 +47,6 @@ const nav = t[activeLangCode];
       </a>
 
       <div class="flex items-center gap-2 md:gap-8">
-        
         <div class="flex items-center gap-4 md:gap-8">
           <a href={`${base}${activeLangCode}/#home`} class="text-sm md:text-base font-bold text-gray-600 hover:text-purple-600 transition-colors tracking-tight">
             {nav.home}
@@ -54,10 +60,7 @@ const nav = t[activeLangCode];
         </div>
 
         <div class="relative inline-block text-left">
-          <button
-            id="lang-menu-btn"
-            class="flex items-center gap-1.5 bg-gray-50 border border-gray-200 px-3 py-2 md:px-4 md:py-2 rounded-xl hover:bg-gray-100 transition-all group"
-          >
+          <button id="lang-menu-btn" class="flex items-center gap-1.5 bg-gray-50 border border-gray-200 px-3 py-2 md:px-4 md:py-2 rounded-xl hover:bg-gray-100 transition-all group">
             <svg class="w-4 h-4 text-gray-400 group-hover:text-purple-600 transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="2" y1="12" x2="22" y2="12"></line>
@@ -69,9 +72,13 @@ const nav = t[activeLangCode];
           <div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-44 md:w-52 bg-white border border-gray-100 rounded-2xl shadow-xl overflow-hidden ring-1 ring-black ring-opacity-5 animate-in fade-in zoom-in-95 duration-100">
             {languages.map((l) => {
               const isActive = l.code === activeLangCode;
+              // 3. CONSTRUCCIÓN DEL ENLACE DINÁMICO
+              // Concatenamos base + nuevo idioma + sub-camino actual
+              const targetUrl = `${base}${l.code}/${currentSubPath}`;
+              
               return (
                 <a 
-                  href={`${base}${l.code}/`} 
+                  href={targetUrl} 
                   class={`flex items-center justify-between px-4 py-3.5 text-sm transition-all border-b border-gray-50 last:border-0 ${isActive ? 'bg-purple-50 text-purple-700 font-bold' : 'text-gray-600 hover:bg-gray-50'}`}
                   dir={l.dir || 'ltr'}
                 >
@@ -95,7 +102,6 @@ const nav = t[activeLangCode];
 </nav>
 
 <script>
-  // Al no usar la variable 'base' aquí dentro, NO te dará error.
   const initNav = () => {
     const btn = document.getElementById("lang-menu-btn");
     const dropdown = document.getElementById("lang-dropdown");
