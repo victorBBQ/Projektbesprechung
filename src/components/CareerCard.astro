@@ -1,0 +1,59 @@
+---
+interface Props {
+  num: number;
+  title: string;
+  color: string;
+  hasDetail: boolean;
+  btnText: string;
+  pendingText: string;
+}
+const { num, title, color, hasDetail, btnText, pendingText } = Astro.props;
+---
+<div class={`${color} border-4 border-black rounded-[2rem] p-6 shadow-neo flex flex-col justify-between min-h-[320px] transition-transform hover:-translate-y-2 overflow-hidden`}>
+  <div class="w-full">
+    <span class="text-white/70 font-black text-lg italic tracking-widest block mb-1 font-archivo">
+      Modul {num}
+    </span>
+    <h3 class="text-white text-2xl font-extrabold leading-[1.15] italic tracking-tighter hyphens-auto break-words font-inter">
+      {title}
+    </h3>
+  </div>
+  
+  <div class="mt-6">
+    {hasDetail ? (
+      <a href={`./modul-1`} class="block w-full bg-white text-black font-black py-4 px-2 rounded-2xl border-4 border-black shadow-neo-sm hover:bg-black hover:text-white transition-all text-center italic text-sm font-inter">
+        {btnText}
+      </a>
+    ) : (
+      <div class="w-full bg-black/20 border-2 border-white/30 rounded-2xl py-4 px-2 text-center">
+        <span class="text-white/40 font-black italic text-xs tracking-widest uppercase font-inter">
+          {pendingText}
+        </span>
+      </div>
+    )}
+  </div>
+</div>
+
+<style>
+  /* Importamos las fuentes directamente si no lo hiciste en el Layout */
+  .font-archivo {
+    font-family: 'Archivo', sans-serif;
+  }
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .shadow-neo {
+    box-shadow: 8px 8px 0px #000;
+  }
+  
+  .shadow-neo-sm {
+    box-shadow: 4px 4px 0px #000;
+  }
+
+  h3 {
+    word-break: break-word;
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
+</style>

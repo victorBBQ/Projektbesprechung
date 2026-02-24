@@ -2,7 +2,7 @@
 interface Props {
   modNumber: string;
   title: string;
-  desc?: string | string[]; // Soportamos texto simple o lista
+  desc?: string | string[];
   colorClass?: string;
   emoji?: string;
   gridClass?: string;
@@ -20,34 +20,35 @@ const {
 } = Astro.props;
 ---
 
-<div class={`container-tilt ${gridClass} group`}>
+<div 
+  class={`container-tilt ${gridClass} group cursor-pointer module-card-trigger`}
+  data-title={title}
+  data-desc={JSON.stringify(desc)}
+  data-num={modNumber}
+  data-label={label}
+  data-color={colorClass} 
+>
   <div class="canvas">
     {Array.from({ length: 25 }).map((_, i) => (
       <div class={`tracker tr-${i + 1}`}></div>
     ))}
     
-    <div id="card" class={`${colorClass} relative shadow-lg`}>
-      <div class="absolute inset-0 bg-black/10 group-hover:bg-black/25 transition-colors pointer-events-none"></div>
+    <div id="card" class={`${colorClass} relative neo-shadow border-4 border-black`}>
+      <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors pointer-events-none"></div>
 
-      <div class="default-view relative z-10">
-        <span class="big-number">{label} {modNumber}</span>
-      </div>
-
-      <div class="hover-view relative z-10">
-        <span class="emoji-main">{emoji}</span>
+      <div class="card-content relative z-10 flex flex-col items-center justify-center p-6 text-center h-full">
+        <span class="text-white/70 font-black text-sm uppercase tracking-widest mb-2">
+          {label} {modNumber}
+        </span>
         
-        <h3 class="title-reveal">{title}</h3>
-
-        <div class="desc-container">
-          {Array.isArray(desc) ? (
-            <ul class="points-list">
-              {desc.map((item) => (
-                <li><span>•</span> {item}</li>
-              ))}
-            </ul>
-          ) : (
-            desc && <p class="desc-reveal">{desc}</p>
-          )}
+        <span class="text-5xl mb-4 filter drop-shadow-md">{emoji}</span>
+        
+        <h3 class="text-white font-black text-xl leading-tight italic tracking-tighter">
+          {title}
+        </h3>
+        
+        <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <span class="bg-black text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase italic">Details ansehen</span>
         </div>
       </div>
     </div>
@@ -55,10 +56,46 @@ const {
 </div>
 
 <style>
+:root {
+  font-family: 'Inter', sans-serif; /* Fuente base para todo */
+}
+
+.big-number {
+  font-family: 'Archivo', sans-serif;
+  color: white;
+  font-size: 2.2rem;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+}
+
+.title-reveal { 
+  font-family: 'Inter', sans-serif;
+  color: white; 
+  font-weight: 800; /* Extra bold pero no black para que no se empaste */
+  font-size: 1.1rem; 
+  line-height: 1.2; 
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  letter-spacing: -0.02em;
+}
+
+/* El texto del modal o pequeñas listas */
+.desc-reveal, li {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.4; /* Más espacio entre líneas para leer mejor en alemán */
+}
   .container-tilt {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 350px;
+  }
+
+  .neo-shadow {
+    box-shadow: 8px 8px 0px #000;
   }
 
   .canvas {
@@ -75,113 +112,20 @@ const {
     position: absolute;
     inset: 0;
     z-index: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 24px;
-    transition: 500ms ease-out;
-    padding: 1.5rem;
+    border-radius: 2rem;
+    transition: 400ms ease-out;
     overflow: hidden;
     backface-visibility: hidden;
-    border: 2px solid rgba(255,255,255,0.1);
   }
 
-  .default-view {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: opacity 300ms;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  }
+  .tracker { position: relative; z-index: 20; width: 100%; height: 100%; }
 
-  .big-number {
-    color: white;
-    font-size: 2rem;
-    font-weight: 900;
-    letter-spacing: -0.05em;
-    text-transform: uppercase;
-  }
-
-  .hover-view {
-    position: absolute;
-    inset: 0;
-    padding: 1.2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    pointer-events: none;
-  }
-
-  .emoji-main {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
-  }
-
-  .title-reveal { 
-    color: white; 
-    font-weight: 900; 
-    font-size: 1rem; 
-    line-height: 1; 
-    font-style: italic;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  }
-
-  .desc-container {
-    width: 100%;
-    max-height: 160px;
-    overflow-y: auto;
-    scrollbar-width: none;
-  }
-  
-  .desc-container::-webkit-scrollbar { display: none; }
-
-  .points-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: left;
-    display: inline-block; 
-  }
-
-  .points-list li {
-    color: white;
-    font-size: 0.85rem;
-    font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: 2px;
-    display: flex;
-    gap: 4px;
-  }
-
-  .points-list li span {
-    opacity: 0.7;
-  }
-
-  .desc-reveal { 
-    color: white; 
-    font-size: 0.75rem; 
-    font-weight: 500;
-    line-height: 1.3;
-  }
-
-  .tracker { position: relative; z-index: 20; width: 100%; height: 100%; cursor: pointer; }
-
-  .tracker:hover ~ #card .default-view { opacity: 0; }
-  .tracker:hover ~ #card .hover-view { opacity: 1; transform: translateY(0); }
-
-  .tr-1:hover ~ #card { transform: rotateX(20deg) rotateY(-10deg); }
-  .tr-2:hover ~ #card { transform: rotateX(20deg) rotateY(-5deg); }
-  .tr-3:hover ~ #card { transform: rotateX(20deg) rotateY(0deg); }
-  .tr-4:hover ~ #card { transform: rotateX(20deg) rotateY(5deg); }
-  .tr-5:hover ~ #card { transform: rotateX(20deg) rotateY(10deg); }
+  /* Rotaciones originales */
+  .tr-1:hover ~ #card { transform: rotateX(15deg) rotateY(-10deg); }
+  .tr-2:hover ~ #card { transform: rotateX(15deg) rotateY(-5deg); }
+  .tr-3:hover ~ #card { transform: rotateX(15deg) rotateY(0deg); }
+  .tr-4:hover ~ #card { transform: rotateX(15deg) rotateY(5deg); }
+  .tr-5:hover ~ #card { transform: rotateX(15deg) rotateY(10deg); }
   .tr-6:hover ~ #card { transform: rotateX(10deg) rotateY(-10deg); }
   .tr-7:hover ~ #card { transform: rotateX(10deg) rotateY(-5deg); }
   .tr-8:hover ~ #card { transform: rotateX(10deg) rotateY(0deg); }
@@ -189,7 +133,7 @@ const {
   .tr-10:hover ~ #card { transform: rotateX(10deg) rotateY(10deg); }
   .tr-11:hover ~ #card { transform: rotateX(0deg) rotateY(-10deg); }
   .tr-12:hover ~ #card { transform: rotateX(0deg) rotateY(-5deg); }
-  .tr-13:hover ~ #card { transform: rotateX(0deg) rotateY(0deg) scale(1.05); }
+  .tr-13:hover ~ #card { transform: rotateX(0deg) rotateY(0deg) scale(1.02); }
   .tr-14:hover ~ #card { transform: rotateX(0deg) rotateY(5deg); }
   .tr-15:hover ~ #card { transform: rotateX(0deg) rotateY(10deg); }
   .tr-16:hover ~ #card { transform: rotateX(-10deg) rotateY(-10deg); }
@@ -197,14 +141,14 @@ const {
   .tr-18:hover ~ #card { transform: rotateX(-10deg) rotateY(0deg); }
   .tr-19:hover ~ #card { transform: rotateX(-10deg) rotateY(5deg); }
   .tr-20:hover ~ #card { transform: rotateX(-10deg) rotateY(10deg); }
-  .tr-21:hover ~ #card { transform: rotateX(-20deg) rotateY(-10deg); }
-  .tr-22:hover ~ #card { transform: rotateX(-20deg) rotateY(-5deg); }
-  .tr-23:hover ~ #card { transform: rotateX(-20deg) rotateY(0deg); }
-  .tr-24:hover ~ #card { transform: rotateX(-20deg) rotateY(5deg); }
-  .tr-25:hover ~ #card { transform: rotateX(-20deg) rotateY(10deg); }
+  .tr-21:hover ~ #card { transform: rotateX(-15deg) rotateY(-10deg); }
+  .tr-22:hover ~ #card { transform: rotateX(-15deg) rotateY(-5deg); }
+  .tr-23:hover ~ #card { transform: rotateX(-15deg) rotateY(0deg); }
+  .tr-24:hover ~ #card { transform: rotateX(-15deg) rotateY(5deg); }
+  .tr-25:hover ~ #card { transform: rotateX(-15deg) rotateY(10deg); }
 
   .tracker:hover ~ #card {
-    filter: brightness(1.1);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    filter: brightness(1.05);
+    box-shadow: 12px 12px 0px #000;
   }
 </style>

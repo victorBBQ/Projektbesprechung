@@ -7,7 +7,8 @@ export const languages = {
     btnPortfolio: "Lehrplan ansehen",
     btnMindmap: "Mindmap-Design",
     portfolioSub: "Modulstruktur: PC-Grundlagen und Fachenglisch",
-    label: "Modul",
+    label: "Thema",
+    label2: "Modul",
     m1T: "Einführung und Überblick",
     m1D: [
       "Organisatorisches", "Kommunikationsschema", "“Big Picture” & Anwendungen",
@@ -16,7 +17,7 @@ export const languages = {
     ],
     m2T: "Zahlensysteme und Logikschaltungen",
     m2D: [
-      "Präsentationen", "Zahlensysteme", "Boolesche Algebra", 
+      "Präsentationen", "Zahlensysteme", "Boolesche Algebra",
       "Binärsystem", "Hexadezimalsystem", "Hausaufgabenübungen"
     ],
     m3T: "Signalverarbeitung und IT-Geräte",
@@ -26,7 +27,7 @@ export const languages = {
     ],
     m4T: "PC-Komponenten und Schaltungslogik",
     m4D: [
-      "von-Neumann-Architektur", "CPU-Befehlszyklus", "Befehlssatz", 
+      "von-Neumann-Architektur", "CPU-Befehlszyklus", "Befehlssatz",
       "Assemblersprache", "Rechenübungen", "Digitale Schaltungslogik"
     ],
     m5T: "Mainboard und Schnittstellen",
@@ -80,6 +81,20 @@ export const languages = {
       "PKI und Zertifikate", "DMZ", "Authentifizierungsdienste",
       "Zugriffskontrolle auf Dateiebene", "Backup-Strategien", "BSI-Grundschutz"
     ],
+    careerTitle: "IT-Ausbildung Lehrplan",
+    careerSub: "Übersicht der 10 Ausbildungsmodule",
+    btnMore: "Details ansehen",
+    pending: "In Kürze verfügbar",
+    c1: "PC-Grundlagen inkl. Fachenglisch (270 UE)",
+    c2: "Wirtschafts- und Sozialkunde (270 UE)",
+    c3: "Netzwerke (360 UE)",
+    c4: "Betriebssysteme (180 UE) - LINUX",
+    c5: "Programmieren (180 UE)",
+    c6: "Datenbanken (180 UE)",
+    c7: "IT-Systemtechnik (360 UE) - Windows-Server",
+    c8: "Projektmanagement (180 UE)",
+    c9: "Fachunterricht Systemintegration (540 UE)",
+    c10: "Prüfungsvorbereitung (531 UE)",
   },
   en: {
     lang: "en",
@@ -98,7 +113,7 @@ export const languages = {
     ],
     m2T: "Number Systems and Logic Circuits",
     m2D: [
-      "Presentations", "Number systems", "Boolean algebra", 
+      "Presentations", "Number systems", "Boolean algebra",
       "Binary system", "Hexadecimal system", "Homework exercises"
     ],
     m3T: "Signal Processing and IT Devices",
@@ -108,7 +123,7 @@ export const languages = {
     ],
     m4T: "PC Components and Circuit Logic",
     m4D: [
-      "von Neumann architecture", "CPU instruction cycle", "Instruction set", 
+      "von Neumann architecture", "CPU instruction cycle", "Instruction set",
       "Assembly language", "Calculation exercises", "Digital circuit logic"
     ],
     m5T: "Motherboard and Interfaces",
@@ -180,7 +195,7 @@ export const languages = {
     ],
     m2T: "Sistemas Numéricos y Circuitos Lógicos",
     m2D: [
-      "Presentaciones", "Sistemas numéricos", "Álgebra de Boole", 
+      "Presentaciones", "Sistemas numéricos", "Álgebra de Boole",
       "Sistema binario", "Sistema hexadecimal", "Ejercicios de tarea"
     ],
     m3T: "Procesamiento de Señales y Dispositivos de TI",
@@ -190,7 +205,7 @@ export const languages = {
     ],
     m4T: "Componentes de PC y Lógica de Circuitos",
     m4D: [
-      "Arquitectura de von Neumann", "Ciclo de instrucción de la CPU", "Conjunto de instrucciones", 
+      "Arquitectura de von Neumann", "Ciclo de instrucción de la CPU", "Conjunto de instrucciones",
       "Lenguaje ensamblador", "Ejercicios de cálculo", "Lógica de circuitos digitales"
     ],
     m5T: "Placa Base e Interfaces",
@@ -262,7 +277,7 @@ export const languages = {
     ],
     m2T: "سیستم‌های اعداد و مدارهای منطقی",
     m2D: [
-      "ارائه ها", "سیستم های اعداد", "جبر بول", 
+      "ارائه ها", "سیستم های اعداد", "جبر بول",
       "سیستم باینری (دودویی)", "سیستم هگزادسیمال", "تمرینات تکلیفی"
     ],
     m3T: "پردازش سیگنال و دستگاه‌های IT",
@@ -272,7 +287,7 @@ export const languages = {
     ],
     m4T: "قطعات کامپیوتر و منطق مدار",
     m4D: [
-      "معماری فون نویمان", "چرخه دستورالعمل CPU", "مجموعه دستورالعمل ها", 
+      "معماری فون نویمان", "چرخه دستورالعمل CPU", "مجموعه دستورالعمل ها",
       "زبان اسمبلی", "تمرینات محاسباتی", "منطق مدار دیجیتال"
     ],
     m5T: "مادربرد و رابط‌ها",
@@ -344,7 +359,7 @@ export const languages = {
     ],
     m2T: "Системы счисления и логические схемы",
     m2D: [
-      "Презентации", "Системы счисления", "Булева алгебра", 
+      "Презентации", "Системы счисления", "Булева алгебра",
       "Двоичная система", "Шестнадцатеричная система", "Домашние задания"
     ],
     m3T: "Обработка сигналов и ИТ-устройства",
@@ -354,7 +369,7 @@ export const languages = {
     ],
     m4T: "Компоненты ПК и логика схем",
     m4D: [
-      "Архитектура фон Неймана", "Цикл инструкций ЦП", "Набор инструкций", 
+      "Архитектура фон Неймана", "Цикл инструкций ЦП", "Набор инструкций",
       "Язык ассемблера", "Вычислительные упражнения", "Логика цифровых схем"
     ],
     m5T: "Материнская плата и интерфейсы",

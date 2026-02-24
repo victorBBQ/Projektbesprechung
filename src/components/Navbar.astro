@@ -31,24 +31,24 @@ const t = {
 const nav = t[activeLangCode];
 ---
 
-<nav class="sticky top-0 z-[100] w-full bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+<nav class="sticky top-0 z-[100] w-full bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm font-inter">
   <div class="max-w-5xl mx-auto px-4">
     <div class="flex justify-between h-16 items-center">
       
-      <a href={`${base}${activeLangCode}/`} class="font-black text-xl text-purple-600 tracking-tighter">
+      <a href={`${base}${activeLangCode}/`} class="font-black text-2xl text-blue-600 tracking-tighter">
         BEBE<span class="text-gray-800">CUTE</span>
       </a>
 
       <div class="flex items-center gap-2 md:gap-8">
         
-        <div class="flex items-center gap-3 md:gap-8">
-          <a href={`${base}${activeLangCode}/#home`} class="text-[11px] md:text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors uppercase tracking-tight">
+        <div class="flex items-center gap-4 md:gap-8">
+          <a href={`${base}${activeLangCode}/#home`} class="text-sm md:text-base font-bold text-gray-600 hover:text-purple-600 transition-colors tracking-tight">
             {nav.home}
           </a>
-          <a href={`${base}${activeLangCode}/#portfolio`} class="text-[11px] md:text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors uppercase tracking-tight">
+          <a href={`${base}${activeLangCode}/#portfolio`} class="text-sm md:text-base font-bold text-gray-600 hover:text-purple-600 transition-colors tracking-tight">
             {nav.modules}
           </a>
-          <a href={`${base}${activeLangCode}/#mindmap`} class="text-[11px] md:text-sm font-bold text-gray-600 hover:text-purple-600 transition-colors uppercase tracking-tight">
+          <a href={`${base}${activeLangCode}/#mindmap`} class="text-sm md:text-base font-bold text-gray-600 hover:text-purple-600 transition-colors tracking-tight">
             {nav.mindmap}
           </a>
         </div>
@@ -56,31 +56,31 @@ const nav = t[activeLangCode];
         <div class="relative inline-block text-left">
           <button
             id="lang-menu-btn"
-            class="flex items-center gap-1.5 bg-gray-50 border border-gray-200 px-2 py-1.5 md:px-4 md:py-2 rounded-xl hover:bg-gray-100 transition-all group"
+            class="flex items-center gap-1.5 bg-gray-50 border border-gray-200 px-3 py-2 md:px-4 md:py-2 rounded-xl hover:bg-gray-100 transition-all group"
           >
             <svg class="w-4 h-4 text-gray-400 group-hover:text-purple-600 transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="2" y1="12" x2="22" y2="12"></line>
               <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
-            <span class="text-[10px] md:text-sm font-bold text-gray-700 uppercase">{currentLang.code}</span>
+            <span class="text-xs md:text-sm font-black text-gray-700 uppercase">{currentLang.code}</span>
           </button>
 
-          <div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-40 md:w-48 bg-white border border-gray-100 rounded-2xl shadow-xl overflow-hidden ring-1 ring-black ring-opacity-5 animate-in fade-in zoom-in-95 duration-100">
+          <div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-44 md:w-52 bg-white border border-gray-100 rounded-2xl shadow-xl overflow-hidden ring-1 ring-black ring-opacity-5 animate-in fade-in zoom-in-95 duration-100">
             {languages.map((l) => {
               const isActive = l.code === activeLangCode;
               return (
                 <a 
                   href={`${base}${l.code}/`} 
-                  class={`flex items-center justify-between px-4 py-3 text-[11px] md:text-sm transition-all border-b border-gray-50 last:border-0 ${isActive ? 'bg-purple-50 text-purple-700 font-bold' : 'text-gray-600 hover:bg-gray-50'}`}
+                  class={`flex items-center justify-between px-4 py-3.5 text-sm transition-all border-b border-gray-50 last:border-0 ${isActive ? 'bg-purple-50 text-purple-700 font-bold' : 'text-gray-600 hover:bg-gray-50'}`}
                   dir={l.dir || 'ltr'}
                 >
                   <div class="flex items-center gap-3">
-                    <span class="text-[10px] font-bold opacity-30 w-4">{l.code.toUpperCase()}</span>
+                    <span class="text-[11px] font-black opacity-30 w-5">{l.code.toUpperCase()}</span>
                     <span>{l.label}</span>
                   </div>
                   {isActive && (
-                    <span class="text-[8px] bg-purple-600 text-white px-1.5 py-0.5 rounded font-black uppercase tracking-tighter">
+                    <span class="text-[9px] bg-purple-600 text-white px-2 py-0.5 rounded-md font-black uppercase tracking-tighter">
                       {nav.current}
                     </span>
                   )}
@@ -95,6 +95,7 @@ const nav = t[activeLangCode];
 </nav>
 
 <script>
+  // Al no usar la variable 'base' aquí dentro, NO te dará error.
   const initNav = () => {
     const btn = document.getElementById("lang-menu-btn");
     const dropdown = document.getElementById("lang-dropdown");
@@ -104,7 +105,6 @@ const nav = t[activeLangCode];
       dropdown?.classList.toggle("hidden");
     });
 
-    // Cerrar al hacer clic fuera
     document.addEventListener("click", () => {
       dropdown?.classList.add("hidden");
     });

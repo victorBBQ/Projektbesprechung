@@ -1,26 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import InfiniteCarousel from './InfiniteCarousel.astro';
-import BalkanMindMap from '../components/BalkanMindMap.astro';
-import Mindmap from "./Mindmap.astro";
-import ModulesGrid from '../components/ModulesGrid.astro';
+import CareerCard from '../components/CareerCard.astro';
 
 
 const { nav } = Astro.props;
 
-const modulesData = Array.from({ length: 14 }, (_, i) => {
-  const num = i + 1;
-  const colors = ["bg-purple-600", "bg-blue-500", "bg-emerald-500", "bg-orange-500", "bg-pink-600", "bg-gray-800", "bg-sky-500", "bg-indigo-600", "bg-emerald-600", "bg-red-500", "bg-orange-600", "bg-cyan-600", "bg-blue-700", "bg-yellow-500"];
-  const emojis = ["ℹ️", "🔢", "📡", "🧠", "🔌", "🌐", "☁️", "📍", "🖥️", "💾", "💿", "💻", "📊", "🛡️"];
-  
-  return {
-    title: nav[`m${num}T`],
-    desc: nav[`m${num}D`],
-    color: colors[i],
-    emoji: emojis[i],
-    label: nav.modLabel
-  };
-});
+const careerModules = [
+  { color: "bg-purple-600" }, { color: "bg-blue-500" }, { color: "bg-emerald-500" },
+  { color: "bg-orange-500" }, { color: "bg-pink-600" }, { color: "bg-gray-800" },
+  { color: "bg-sky-500" }, { color: "bg-indigo-600" }, { color: "bg-red-500" },
+  { color: "bg-yellow-500" }
+];
+
 ---
 
 <Layout title="BEBECUTE Portfolio" lang={nav.lang}>
@@ -31,7 +22,7 @@ const modulesData = Array.from({ length: 14 }, (_, i) => {
       </span>
       
       <h1 class="text-5xl md:text-7xl font-black text-gray-900 mb-6 italic tracking-tighter">
-        BEBE<span class="text-purple-600">CUTE</span>
+        BEBE<span class="text-blue-600">CUTE</span>
       </h1>
       
       <p class="max-w-2xl mx-auto text-xl text-gray-600 leading-relaxed mb-10">
@@ -39,9 +30,6 @@ const modulesData = Array.from({ length: 14 }, (_, i) => {
       </p>
 
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="#portfolio" class="px-8 py-4 bg-purple-600 text-white font-bold rounded-2xl hover:bg-purple-700 transition-all shadow-lg shadow-purple-200">
-          {nav.btnPortfolio}
-        </a>
         <a href="#mindmap" class="px-8 py-4 bg-white text-gray-700 border border-gray-200 font-bold rounded-2xl hover:bg-gray-50 transition-all">
           {nav.btnMindmap}
         </a>
@@ -50,14 +38,27 @@ const modulesData = Array.from({ length: 14 }, (_, i) => {
   </section>
 
 <section id="portfolio" class="bg-gray-50 py-20 min-h-screen">
-    <div class="mb-16 text-center px-4">
-      <h2 class="text-5xl font-black italic text-gray-900 tracking-tighter uppercase">
-        BEBECUTE <span class="text-purple-600">Learning</span>
-      </h2>
-      <p class="text-gray-500 mt-4 text-xl italic font-medium">{nav.portfolioSub}</p>
-    </div>
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="mb-16 text-center">
+        <h2 class="text-5xl font-black italic text-gray-900 tracking-tighter uppercase">
+          {nav.careerTitle}
+        </h2>
+        <p class="text-gray-500 mt-2 italic font-medium">{nav.careerSub}</p>
+      </div>
 
-    <ModulesGrid modules={modulesData} />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+        {careerModules.map((mod, i) => (
+          <CareerCard 
+            num={i + 1}
+            title={nav[`c${i+1}`]}
+            color={mod.color}
+            hasDetail={i === 0}
+            btnText={nav.btnMore}
+            pendingText={nav.pending}
+          />
+        ))}
+      </div>
+    </div>
   </section>
 
 <section id="mindmap" class="py-20 min-h-screen flex flex-col justify-center items-center bg-white">
@@ -65,10 +66,6 @@ const modulesData = Array.from({ length: 14 }, (_, i) => {
     <h2 class="text-3xl font-bold mb-8 italic">
       MINDMAP <span class="text-blue-600">BEBECUTE</span>
     </h2>
-
-    <div class="bg-white p-4 rounded-3xl shadow-xl border border-gray-200">
-      <Mindmap />
-    </div>
   </div>
 </section>
 </Layout>
