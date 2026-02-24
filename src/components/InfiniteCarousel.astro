@@ -4,7 +4,7 @@ import TiltCard from './TiltCard.astro';
 interface Props {
   modules: Array<{
     title: string;
-    desc: string | string[]; // Soportamos el cambio a listas que hicimos
+    desc: string | string[];
     color: string;
     emoji: string;
     label: string;
@@ -50,18 +50,12 @@ const tripleModules = [...modules, ...modules, ...modules];
     align-items: center;
     overflow: visible;
     margin-top: -20px;
-    /* Ajuste vital: Cuando el navegador salta al ID de la sección, 
-       este margen evita que la card quede pegada al techo o se corte abajo.
-    */
     scroll-margin-top: 100px; 
   }
 
   .carousel-viewport {
     width: 100%;
     overflow: hidden;
-    /* Aumentamos ligeramente el padding vertical para que el efecto "Tilt" (inclinación)
-       tenga espacio para moverse sin que el borde de la card sea cortado por el overflow:hidden
-    */
     padding: 3rem 0; 
     position: relative;
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
@@ -75,7 +69,6 @@ const tripleModules = [...modules, ...modules, ...modules];
     will-change: transform;
   }
 
-  /* TAMAÑO INTOCABLE */
   .carousel-item {
     width: 380px;
     height: 350px;
@@ -107,16 +100,12 @@ const tripleModules = [...modules, ...modules, ...modules];
   @media (max-width: 768px) {
     .carousel-item {
       width: 75vw; 
-      /* Alto intocable según instrucción */
       height: 350px;
     }
     .carousel-track {
       gap: 5vw;
     }
     .carousel-viewport {
-      /* En móvil reducimos el padding superior para compensar el salto del ancla,
-         pero mantenemos el inferior para que no se corte la sombra/borde.
-      */
       padding: 1rem 0 4rem 0; 
       mask-image: none;
       -webkit-mask-image: none;
@@ -155,20 +144,16 @@ const tripleModules = [...modules, ...modules, ...modules];
     const step = getStepSize();
     const modulesCount = track.children.length / 3;
     
-    // Mejoramos el cálculo del offset para que sea dinámico al ancho real del dispositivo
     const item = track.querySelector('.carousel-item') as HTMLElement;
     const offset = isMobile() ? (window.innerWidth - item.offsetWidth) / 2 : 0;
     
     currentX = -(step * modulesCount) + offset;
-    track.style.transition = "none"; // Evita deslizamiento visual al cargar
+    track.style.transition = "none";
     track.style.transform = `translateX(${currentX}px)`;
   }
 
-  // Ejecutamos con un pequeño delay para asegurar que el layout esté listo
   setTimeout(initPosition, 150);
 
-  // CORRECCIÓN PARA EL SALTO DE ANCLA
-  // Si el usuario presiona el link de módulos, forzamos el re-centrado
   window.addEventListener('hashchange', () => {
     setTimeout(initPosition, 50);
   });
