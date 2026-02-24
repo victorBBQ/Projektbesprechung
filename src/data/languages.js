@@ -37,7 +37,7 @@ export const languages = {
     m14T: "Sicherheit & Verfügbarkeit",
     m14D: "CIA-Modell, PKI, DMZ und BSI-Grundschutz.",
   },
-  en: {
+en: {
     lang: "en",
     heroBadge: "IT Fundamentals Module",
     heroTitle: "Welcome to",
@@ -47,35 +47,78 @@ export const languages = {
     portfolioSub: "Module Structure: PC Fundamentals and Technical English",
     label: "Module",
     m1T: "Introduction and Overview",
-    m1D: "Organizational matters, communication schemes, and EVA/IPO model.",
+    m1D: [
+      "Organizational matters", "Communication scheme", "“Big Picture” & Applications",
+      "Preparatory course topics", "Computer system overview", "EVA / IPO Model",
+      "PC architecture example", "Independent research", "Education & development history"
+    ],
     m2T: "Number Systems and Logic Circuits",
-    m2D: "Boolean algebra, binary, and hexadecimal systems.",
+    m2D: [
+      "Presentations", "Number systems", "Boolean algebra", 
+      "Binary system", "Hexadecimal system", "Homework exercises"
+    ],
     m3T: "Signal Processing and IT Devices",
-    m3D: "Digital signals, codes, symbols, and I/O peripherals.",
+    m3D: [
+      "Number formats", "Digital signal processing", "Codes, characters, and symbols",
+      "IT systems (EVA model)", "Input & Output devices", "Data processing"
+    ],
     m4T: "PC Components and Circuit Logic",
-    m4D: "Von Neumann architecture, instruction cycles, and assembly language.",
+    m4D: [
+      "von Neumann architecture", "CPU instruction cycle", "Instruction set", 
+      "Assembly language", "Calculation exercises", "Digital circuit logic"
+    ],
     m5T: "Motherboard and Interfaces",
-    m5D: "CPU, BIOS, RAM, expansion slots, and memory modules.",
+    m5D: [
+      "External PC interfaces", "Internal expansion slots", "Motherboard & CPU",
+      "Memory modules", "BIOS chip & RAM", "Mass storage (HDD/SSD)",
+      "PC configuration assignment"
+    ],
     m6T: "Networks, Protocols, and Standards",
-    m6D: "ISO/OSI reference model, topologies, and network sniffers.",
+    m6D: [
+      "Network protocols", "ISO/OSI reference model", "Network sniffer",
+      "Website access example", "Network topologies"
+    ],
     m7T: "Virtual Systems and Cloud Computing",
-    m7D: "Hypervisors, guest OS installation, and Apache web services.",
+    m7D: [
+      "Hypervisor", "Guest OS installation", "Apache Web service setup",
+      "Windows VMs", "Cloud infrastructures", "Microsoft Azure example"
+    ],
     m8T: "IP Addressing and Subnetting",
-    m8D: "Subnet masks, CIDR, public/private addresses, and IPv6.",
+    m8D: [
+      "IP addresses & Subnets", "Classful networks", "Subnet mask & CIDR",
+      "Network & Broadcast address", "Public & Private addresses", "Static routes",
+      "Gateway & Default route", "NAT router", "IPv6 & Tunnel solutions"
+    ],
     m9T: "PC and Server Hardware",
-    m9D: "Differences between PC and Server and electrical engineering basics.",
+    m9D: [
+      "Differences between PC and Server", "Electrical engineering fundamentals"
+    ],
     m10T: "Memory and File Systems",
-    m10D: "Volatile/non-volatile memory, RAID arrays, NAS, and SAN.",
+    m10D: [
+      "Volatile & Non-volatile memory", "ROM, BIOS & RAM", "HDD and SSD",
+      "Files and file systems", "RAID arrays", "NAS and SAN", "Physical storage processes"
+    ],
     m11T: "Operating Systems",
-    m11D: "Definition, tasks, development history, and installation.",
+    m11D: [
+      "Definition and tasks", "Different operating systems", "Development history",
+      "Structure and fundamentals", "Installation & Online research"
+    ],
     m12T: "Data Structures and Programming",
-    m12D: "Programming fundamentals, program types, and example code.",
+    m12D: [
+      "Data and file systems", "Program files", "Fundamentals of programming",
+      "Practical exercises", "Program types", "Example code"
+    ],
     m13T: "Network Services and Databases",
-    m13D: "Typical applications and practical exercises in simulation software.",
+    m13D: [
+      "Typical network applications", "Simulation software (Packet Tracer)", "Scenario-based exercises"
+    ],
     m14T: "Security and High Availability",
-    m14D: "CIA model, PKI, certificates, DMZ, and BSI baseline protection.",
+    m14D: [
+      "Dynamic routing", "Failure scenarios", "Security frameworks (CIA)",
+      "PKI and certificates", "DMZ", "Authentication services",
+      "File-level access control", "Backup strategies", "BSI baseline protection"
+    ],
   },
-
   es: {
     lang: "es",
     heroBadge: "Módulo: Fundamentos de IT",
@@ -114,7 +157,6 @@ export const languages = {
     m14T: "Seguridad y Alta Disponibilidad",
     m14D: "Modelo CIA, PKI, certificados, DMZ y protección básica de la BSI.",
   },
-
   fa: {
     lang: "fa",
     heroBadge: "ماژول مبانی فناوری اطلاعات",
@@ -153,7 +195,6 @@ export const languages = {
     m14T: "امنیت و در دسترس بودن بالا",
     m14D: "مدل CIA، زیرساخت PKI، گواهینامه‌ها، DMZ و حفاظت BSI.",
   },
-
   ru: {
     lang: "ru",
     heroBadge: "Модуль: Основы ИТ",

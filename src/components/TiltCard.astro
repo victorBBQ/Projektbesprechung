@@ -2,7 +2,7 @@
 interface Props {
   modNumber: string;
   title: string;
-  desc?: string;
+  desc?: string | string[]; // Soportamos texto simple o lista
   colorClass?: string;
   emoji?: string;
   gridClass?: string;
@@ -34,9 +34,21 @@ const {
       </div>
 
       <div class="hover-view relative z-10">
-        <span class=" text-7xl mb-3 drop-shadow-md">{emoji}</span>
+        <span class="emoji-main">{emoji}</span>
+        
         <h3 class="title-reveal">{title}</h3>
-        {desc && <p class="desc-reveal">{desc}</p>}
+
+        <div class="desc-container">
+          {Array.isArray(desc) ? (
+            <ul class="points-list">
+              {desc.map((item) => (
+                <li><span>•</span> {item}</li>
+              ))}
+            </ul>
+          ) : (
+            desc && <p class="desc-reveal">{desc}</p>
+          )}
+        </div>
       </div>
     </div>
   </div>
@@ -71,6 +83,7 @@ const {
     padding: 1.5rem;
     overflow: hidden;
     backface-visibility: hidden;
+    border: 2px solid rgba(255,255,255,0.1);
   }
 
   .default-view {
@@ -83,23 +96,16 @@ const {
 
   .big-number {
     color: white;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 900;
     letter-spacing: -0.05em;
-  }
-
-  .prompt-text {
-    color: rgba(255,255,255,0.9);
-    font-size: 0.65rem;
-    font-weight: bold;
-    margin-top: 5px;
     text-transform: uppercase;
   }
 
   .hover-view {
     position: absolute;
     inset: 0;
-    padding: 1.5rem;
+    padding: 1.2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -109,41 +115,67 @@ const {
     transform: translateY(20px);
     transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
     pointer-events: none;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
   }
 
-  .emoji-mini { 
-    font-size: 2.2rem; 
-    margin-bottom: 0.5rem; 
+  .emoji-main {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
   }
 
   .title-reveal { 
     color: white; 
     font-weight: 900; 
-    font-size: 1.2rem; 
-    line-height: 1.1; 
+    font-size: 1.1rem; 
+    line-height: 1; 
     font-style: italic;
     text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+
+  .desc-container {
+    width: 100%;
+    max-height: 160px;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  
+  .desc-container::-webkit-scrollbar { display: none; }
+
+  .points-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    display: inline-block; 
+  }
+
+  .points-list li {
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 2px;
+    display: flex;
+    gap: 4px;
+  }
+
+  .points-list li span {
+    opacity: 0.7;
   }
 
   .desc-reveal { 
-    color: rgba(255,255,255,1); 
+    color: white; 
     font-size: 0.75rem; 
-    margin-top: 0.5rem;
     font-weight: 500;
     line-height: 1.3;
   }
 
   .tracker { position: relative; z-index: 20; width: 100%; height: 100%; cursor: pointer; }
 
-  .tracker:hover ~ #card .default-view {
-    opacity: 0;
-  }
-
-  .tracker:hover ~ #card .hover-view {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .tracker:hover ~ #card .default-view { opacity: 0; }
+  .tracker:hover ~ #card .hover-view { opacity: 1; transform: translateY(0); }
 
   .tr-1:hover ~ #card { transform: rotateX(20deg) rotateY(-10deg); }
   .tr-2:hover ~ #card { transform: rotateX(20deg) rotateY(-5deg); }
@@ -173,6 +205,6 @@ const {
 
   .tracker:hover ~ #card {
     filter: brightness(1.1);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
   }
 </style>
