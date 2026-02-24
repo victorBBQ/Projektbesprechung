@@ -3,66 +3,114 @@ const { lang = "de" } = Astro.props;
 const year = new Date().getFullYear();
 
 const t = {
-  es: { 
-    rights: "Todos los derechos reservados", 
-    fantasy: "Proyecto educativo ficticio",
+  es: {
     location: "Ubicación",
-    disclaimer: "Este es un proyecto de clase no comercial. No es el aviso legal oficial de BBQ GmbH.",
-    contact: "Contacto"
+    contact: "Contacto",
+    rights: "Todos los derechos reservados",
+    disclaimer:
+      "Este es un proyecto educativo no comercial. No es el aviso legal oficial de BBQ GmbH.",
+    project: "Proyecto educativo ficticio de una clase de informática.",
+    address: "Wendenstraße, 20097 Hamburgo, Alemania", //
   },
-  en: { 
-    rights: "All rights reserved", 
-    fantasy: "Fictional educational project",
+  en: {
     location: "Location",
-    disclaimer: "This is a non-commercial class project. This is not the official legal notice of BBQ GmbH.",
-    contact: "Contact"
+    contact: "Contact",
+    rights: "All rights reserved",
+    disclaimer:
+      "This is a non-commercial educational project. It is not the official legal notice of BBQ GmbH.",
+    project: "Fictional educational project of an IT specialist class.",
+    address: "Wendenstraße, 20097 Hamburg, Germany", //
   },
-  de: { 
-    rights: "Alle Rechte vorbehalten", 
-    fantasy: "Fiktives Bildungsprojekt",
+  de: {
     location: "Standort",
-    disclaimer: "Dies ist ein nicht-kommerzielles Klassenprojekt. Es handelt sich nicht um das offizielle Impressum der BBQ GmbH.",
-    contact: "Kontakt"
-  }
+    contact: "Kontakt",
+    rights: "Alle Rechte vorbehalten",
+    disclaimer:
+      "Dies ist ein nicht-kommerzielles Klassenprojekt. Es handelt sich nicht um das offizielle Impressum der BBQ GmbH.",
+    project: "Fiktives Bildungsprojekt einer Fachinformatiker-Klasse.",
+    address: "Wendenstraße, 20097 Hamburg, Deutschland", //
+  },
+  ru: {
+    location: "Местоположение",
+    contact: "Контакт",
+    rights: "Все права защищены",
+    disclaimer:
+      "Это некоммерческий образовательный проект. Это не официальное уведомление BBQ GmbH.",
+    project: "Вымышленный образовательный проект класса ИТ-специалистов.",
+    address: "Венденштрассе, 20097 Гамбург, Германия", //
+  },
+  fa: {
+    location: "محل برگزاری",
+    contact: "تماس",
+    rights: "تمامی حقوق محفوظ است",
+    disclaimer:
+      "این یک پروژه آموزشی غیرتجاری است و اطلاعیه رسمی BBQ GmbH نیست.",
+    project: "پروژه آموزشی خیالی کلاس متخصصان فناوری اطلاعات.",
+    address: "وندن‌اشتراسه، ۲۰۰۹۷ هامبورگ، آلمان", //
+  },
 };
 
 const nav = t[lang] || t.de;
+const isRtl = lang === "fa";
 ---
 
-<footer class="bg-white border-t-4 border-black pt-10 pb-6 mt-16 font-inter">
+<footer
+  class="bg-white border-t-4 border-black pt-10 pb-6 mt-16 font-inter"
+  dir={isRtl ? "rtl" : "ltr"}
+>
   <div class="max-w-5xl mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 items-center">
-      
-      <div class="space-y-4 text-center md:text-left">
-        <h2 class="text-3xl font-black text-blue-600 tracking-tighter italic font-archivo">
+      <div
+        class={`space-y-4 text-center ${isRtl ? "md:text-right" : "md:text-left"}`}
+      >
+        <h2
+          class="text-3xl font-black text-blue-600 tracking-tighter italic font-archivo"
+        >
           BEBE<span class="text-black">CUTE</span> ✨
         </h2>
-        <p class="text-gray-500 font-medium text-sm leading-relaxed max-w-xs mx-auto md:mx-0">
-          Fiktives Bildungsprojekt einer Fachinformatiker-Klasse.
+        <p
+          class="text-gray-500 font-medium text-sm leading-relaxed max-w-xs mx-auto md:mx-0"
+        >
+          {nav.project}
         </p>
       </div>
 
-      <div class="bg-gray-50 border-[3px] border-black p-6 rounded-[1.5rem] shadow-[6px_6px_0px_#000] relative overflow-hidden max-w-md ml-auto">
-        <div class="absolute top-0 left-0 w-full h-1.5 bg-purple-600 border-b-[2px] border-black"></div>
-        
+      <div
+        class={`bg-gray-50 border-[3px] border-black p-6 rounded-[1.5rem] shadow-[6px_6px_0px_#000] relative overflow-hidden max-w-md ${isRtl ? "mr-auto" : "ml-auto"}`}
+      >
+        <div
+          class="absolute top-0 left-0 w-full h-1.5 bg-purple-600 border-b-[2px] border-black"
+        >
+        </div>
+
         <div class="space-y-3">
           <div>
-            <span class="block text-[9px] font-black uppercase tracking-[0.1em] text-purple-600 mb-0.5">
-              Standort
+            <span
+              class="block text-[9px] font-black uppercase tracking-[0.1em] text-purple-600 mb-0.5"
+            >
+              {nav.location}
             </span>
             <p class="text-xs font-bold text-gray-900 leading-tight">
-              Wendenstraße, 20097 Hamburg, Deutschland
+              {nav.address}
             </p>
           </div>
 
           <div class="p-3 bg-yellow-50 border-[2px] border-black rounded-xl">
             <p class="text-[10px] font-bold leading-tight text-gray-800">
-              Dies ist ein nicht-kommerzielles Klassenprojekt. Es handelt sich nicht um das offizielle Impressum der BBQ GmbH.
+              {nav.disclaimer}
             </p>
           </div>
 
           <div class="pt-1">
-            <a href="mailto:klasse@bebecute.de" class="text-xs font-black italic text-blue-600 hover:text-black transition-colors break-all">
+            <span
+              class="block text-[9px] font-black uppercase tracking-[0.1em] text-gray-400 mb-0.5"
+            >
+              {nav.contact}
+            </span>
+            <a
+              href="mailto:klasse@bebecute.de"
+              class="text-xs font-black italic text-blue-600 hover:text-black transition-colors break-all"
+            >
               klasse@bebecute.de
             </a>
           </div>
@@ -72,16 +120,17 @@ const nav = t[lang] || t.de;
 
     <div class="border-t border-gray-200 pt-6 text-center">
       <p class="text-[9px] font-bold text-gray-400 uppercase tracking-[0.2em]">
-        &copy; 2026 BEBECUTE LANDPAGE — ALLE RECHTE VORBEHALTEN
+        &copy; {year} BEBECUTE LANDPAGE — {nav.rights}
       </p>
     </div>
   </div>
 </footer>
 
 <style>
-  .shadow-neo-footer {
-    box-shadow: 10px 10px 0px #000;
+  .font-archivo {
+    font-family: "Archivo", sans-serif;
   }
-  .font-archivo { font-family: 'Archivo', sans-serif; }
-  .font-inter { font-family: 'Inter', sans-serif; }
+  .font-inter {
+    font-family: "Inter", sans-serif;
+  }
 </style>
