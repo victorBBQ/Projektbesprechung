@@ -3,41 +3,85 @@ export const languages = {
     lang: "de",
     heroBadge: "IT-Grundlagen Modul",
     heroTitle: "Willkommen bei",
-    heroDesc: "Wir vermitteln IT-Inhalte mit Fokus auf die Fachinformatiker-Ausbildung. Hochperformant, modern und praxisorientiert.",
+    heroDesc: "Spezialisierte IT-Schulung mit Fokus auf Systemarchitektur, Vernetzung und digitale Logik. Basierend auf dem offiziellen Lehrplan für Fachinformatiker.",
     btnPortfolio: "Lehrplan ansehen",
-    btnMindmap: "Mindmap Design",
-    portfolioSub: "Struktur des Moduls: PC-Grundlagen und Fachenglisch",
+    btnMindmap: "Mindmap-Design",
+    portfolioSub: "Modulstruktur: PC-Grundlagen und Fachenglisch",
     label: "Modul",
-    m1T: "Einführung & Überblick",
-    m1D: "EVA-Prinzip, Big Picture und Anwendungen.",
-    m2T: "Zahlensysteme & Logik",
-    m2D: "Binär, Hexadezimal und Boolesche Algebra.",
-    m3T: "Signalverarbeitung",
-    m3D: "Digitale Signale, Codes und Peripherie.",
-    m4T: "PC-Komponenten & Logik",
-    m4D: "Von-Neumann-Architektur, CPU und Assembler.",
-    m5T: "Mainboard & Schnittstellen",
-    m5D: "BIOS, RAM, Slots und PC-Konfiguration.",
-    m6T: "Netzwerke & Standards",
-    m6D: "ISO/OSI-Modell, Protokolle und Topologien.",
-    m7T: "Virtuelle Systeme & Cloud",
-    m7D: "Hypervisor, Apache Web Service und Azure.",
-    m8T: "IP-Adressierung",
-    m8D: "Subnetting, CIDR, IPv4/v6 und Routing.",
-    m9T: "PC & Server Hardware",
-    m9D: "Unterschiede und Elektrotechnik-Grundlagen.",
-    m10T: "Speicher & Dateisysteme",
-    m10D: "RAID, HDD, SSD und NAS/SAN.",
+    m1T: "Einführung und Überblick",
+    m1D: [
+      "Organisatorisches", "Kommunikationsschema", "“Big Picture” & Anwendungen",
+      "Themen des Vorbereitungskurses", "Computersystem-Überblick", "EVA-Prinzip",
+      "Beispiel PC-Architektur", "Eigenständige Recherche", "Ausbildungs- & Entwicklungsgeschichte"
+    ],
+    m2T: "Zahlensysteme und Logikschaltungen",
+    m2D: [
+      "Präsentationen", "Zahlensysteme", "Boolesche Algebra", 
+      "Binärsystem", "Hexadezimalsystem", "Hausaufgabenübungen"
+    ],
+    m3T: "Signalverarbeitung und IT-Geräte",
+    m3D: [
+      "Zahlenformate", "Digitale Signalverarbeitung", "Codes, Zeichen und Symbole",
+      "IT-Systeme (EVA-Modell)", "Eingabe- & Ausgabegeräte", "Datenverarbeitung"
+    ],
+    m4T: "PC-Komponenten und Schaltungslogik",
+    m4D: [
+      "von-Neumann-Architektur", "CPU-Befehlszyklus", "Befehlssatz", 
+      "Assemblersprache", "Rechenübungen", "Digitale Schaltungslogik"
+    ],
+    m5T: "Mainboard und Schnittstellen",
+    m5D: [
+      "Externe PC-Schnittstellen", "Interne Erweiterungssteckplätze", "Mainboard & CPU",
+      "Speichermodule", "BIOS-Chip & RAM", "Massenspeicher (HDD/SSD)",
+      "Aufgabe: PC-Konfiguration erstellen"
+    ],
+    m6T: "Netzwerke, Protokolle und Standards",
+    m6D: [
+      "Netzwerkprotokolle", "ISO/OSI-Referenzmodell", "Netzwerk-Sniffer",
+      "Beispiel: Website-Zugriff", "Netzwerktopologien"
+    ],
+    m7T: "Virtuelle Systeme und Cloud Computing",
+    m7D: [
+      "Hypervisor", "Installation von Gast-Betriebssystemen", "Apache Web-Service Einrichtung",
+      "Windows-VMs", "Cloud-Infrastrukturen", "Beispiel: Microsoft Azure"
+    ],
+    m8T: "IP-Adressierung und Subnetting",
+    m8D: [
+      "IP-Adressen & Subnetze", "Classful Networks", "Subnetzmaske & CIDR",
+      "Netzwerk- & Broadcast-Adresse", "Öffentliche & private Adressen", "Statische Routen",
+      "Gateway & Standardroute", "NAT-Router", "IPv6 & Tunnel-Lösungen"
+    ],
+    m9T: "PC- und Server-Hardware",
+    m9D: [
+      "Unterschiede zwischen PC und Server", "Elektrotechnik-Grundlagen"
+    ],
+    m10T: "Speicher- und Dateisysteme",
+    m10D: [
+      "Flüchtiger & nicht-flüchtiger Speicher", "ROM, BIOS & RAM", "HDD und SSD",
+      "Dateien und Dateisysteme", "RAID-Arrays", "NAS und SAN", "Physische Speichervorgänge"
+    ],
     m11T: "Betriebssysteme",
-    m11D: "Definition, Aufgaben und Installationsgrundlagen.",
-    m12T: "Datenstrukturen & Coding",
-    m12D: "Programmiersprachen und Logik-Grundlagen.",
-    m13T: "Netzdienste & Datenbanken",
-    m13D: "Packet Tracer Übungen und SQL-Grundlagen.",
-    m14T: "Sicherheit & Verfügbarkeit",
-    m14D: "CIA-Modell, PKI, DMZ und BSI-Grundschutz.",
+    m11D: [
+      "Definition und Aufgaben", "Verschiedene Betriebssysteme", "Entwicklungsgeschichte",
+      "Aufbau und Grundlagen", "Installation & Online-Recherche"
+    ],
+    m12T: "Datenstrukturen und Programmierung",
+    m12D: [
+      "Daten- und Dateisysteme", "Programmdateien", "Grundlagen der Programmierung",
+      "Praktische Übungen", "Programmtypen", "Beispielcode"
+    ],
+    m13T: "Netzwerkdienste und Datenbanken",
+    m13D: [
+      "Typische Netzwerkanwendungen", "Simulationssoftware (Packet Tracer)", "Szenariobasierte Übungen"
+    ],
+    m14T: "Sicherheit und Hochverfügbarkeit",
+    m14D: [
+      "Dynamisches Routing", "Ausfallszenarien", "Sicherheits-Frameworks (CIA)",
+      "PKI und Zertifikate", "DMZ", "Authentifizierungsdienste",
+      "Zugriffskontrolle auf Dateiebene", "Backup-Strategien", "BSI-Grundschutz"
+    ],
   },
-en: {
+  en: {
     lang: "en",
     heroBadge: "IT Fundamentals Module",
     heroTitle: "Welcome to",
@@ -121,116 +165,248 @@ en: {
   },
   es: {
     lang: "es",
-    heroBadge: "Módulo: Fundamentos de IT",
+    heroBadge: "Módulo de Fundamentos de TI",
     heroTitle: "Bienvenido a",
-    heroDesc: "Formación especializada en arquitectura de sistemas, redes y lógica digital. Basado en el currículo oficial para Fachinformatiker.",
-    btnPortfolio: "Ver Temario",
-    btnMindmap: "Mapa Mental",
+    heroDesc: "Formación especializada en TI centrada en arquitectura de sistemas, redes y lógica digital. Basado en el plan de estudios oficial para Especialistas en TI.",
+    btnPortfolio: "Ver Currículum",
+    btnMindmap: "Diseño del Mapa Mental",
     portfolioSub: "Estructura del Módulo: Fundamentos de PC e Inglés Técnico",
     label: "Módulo",
-    m1T: "Introducción y Perspectiva General",
-    m1D: "Asuntos organizativos, esquema de comunicación y modelo EVA/IPO.",
+    m1T: "Introducción y Visión General",
+    m1D: [
+      "Asuntos organizativos", "Esquema de comunicación", "“Big Picture” y Aplicaciones",
+      "Temas del curso preparatorio", "Visión general del sistema informático", "Modelo EVA / IPO",
+      "Ejemplo de arquitectura de PC", "Investigación independiente", "Historia de la educación y el desarrollo"
+    ],
     m2T: "Sistemas Numéricos y Circuitos Lógicos",
-    m2D: "Álgebra de Boole, sistemas binario y hexadecimal.",
-    m3T: "Procesamiento de Señales y Dispositivos",
-    m3D: "Señales digitales, códigos, símbolos y periféricos de entrada/salida.",
+    m2D: [
+      "Presentaciones", "Sistemas numéricos", "Álgebra de Boole", 
+      "Sistema binario", "Sistema hexadecimal", "Ejercicios de tarea"
+    ],
+    m3T: "Procesamiento de Señales y Dispositivos de TI",
+    m3D: [
+      "Formatos de números", "Procesamiento de señales digitales", "Códigos, caracteres y símbolos",
+      "Sistemas de TI (modelo EVA)", "Dispositivos de entrada y salida", "Procesamiento de datos"
+    ],
     m4T: "Componentes de PC y Lógica de Circuitos",
-    m4D: "Arquitectura Von Neumann, ciclo de instrucciones y lenguaje ensamblador.",
+    m4D: [
+      "Arquitectura de von Neumann", "Ciclo de instrucción de la CPU", "Conjunto de instrucciones", 
+      "Lenguaje ensamblador", "Ejercicios de cálculo", "Lógica de circuitos digitales"
+    ],
     m5T: "Placa Base e Interfaces",
-    m5D: "CPU, BIOS, RAM, ranuras de expansión y módulos de memoria.",
+    m5D: [
+      "Interfaces externas de PC", "Ranuras de expansión internas", "Placa base y CPU",
+      "Módulos de memoria", "Chip BIOS y RAM", "Almacenamiento masivo (HDD/SSD)",
+      "Tarea de configuración de PC"
+    ],
     m6T: "Redes, Protocolos y Estándares",
-    m6D: "Modelo de referencia ISO/OSI, topologías y sniffers de red.",
-    m7T: "Sistemas Virtuales y Cloud Computing",
-    m7D: "Hypervisores, instalación de SO invitados y servicios web (Apache).",
+    m6D: [
+      "Protocolos de red", "Modelo de referencia ISO/OSI", "Sniffer de red",
+      "Ejemplo de acceso a sitios web", "Topologías de red"
+    ],
+    m7T: "Sistemas Virtuales y Computación en la Nube",
+    m7D: [
+      "Hipervisor", "Instalación de SO invitado", "Configuración de servicio web Apache",
+      "VMs de Windows", "Infraestructuras de nube", "Ejemplo de Microsoft Azure"
+    ],
     m8T: "Direccionamiento IP y Subnetting",
-    m8D: "Máscaras de subred, CIDR, direcciones públicas/privadas e IPv6.",
-    m9T: "Hardware de PC y Servidor",
-    m9D: "Diferencias entre PC y Servidor y fundamentos de ingeniería eléctrica.",
+    m8D: [
+      "Direcciones IP y Subredes", "Redes con clase", "Máscara de subred y CIDR",
+      "Dirección de red y broadcast", "Direcciones públicas y privadas", "Rutas estáticas",
+      "Puerta de enlace y ruta predeterminada", "Router NAT", "IPv6 y soluciones de túnel"
+    ],
+    m9T: "Hardware de PC y Servidores",
+    m9D: [
+      "Diferencias entre PC y Servidor", "Fundamentos de ingeniería eléctrica"
+    ],
     m10T: "Memoria y Sistemas de Archivos",
-    m10D: "Memorias volátiles y no volátiles, arreglos RAID, NAS y SAN.",
+    m10D: [
+      "Memoria volátil y no volátil", "ROM, BIOS y RAM", "HDD y SSD",
+      "Archivos y sistemas de archivos", "Arreglos RAID", "NAS y SAN", "Procesos de almacenamiento físico"
+    ],
     m11T: "Sistemas Operativos",
-    m11D: "Definición, tareas, historia de desarrollo e instalación.",
+    m11D: [
+      "Definición y tareas", "Diferentes sistemas operativos", "Historia del desarrollo",
+      "Estructura y fundamentos", "Instalación e investigación en línea"
+    ],
     m12T: "Estructuras de Datos y Programación",
-    m12D: "Fundamentos de programación, tipos de programas y código de ejemplo.",
+    m12D: [
+      "Sistemas de datos y archivos", "Archivos de programa", "Fundamentos de programación",
+      "Ejercicios prácticos", "Tipos de programas", "Código de ejemplo"
+    ],
     m13T: "Servicios de Red y Bases de Datos",
-    m13D: "Aplicaciones típicas y ejercicios prácticos en software de simulación.",
+    m13D: [
+      "Aplicaciones de red típicas", "Software de simulación (Packet Tracer)", "Ejercicios basados en escenarios"
+    ],
     m14T: "Seguridad y Alta Disponibilidad",
-    m14D: "Modelo CIA, PKI, certificados, DMZ y protección básica de la BSI.",
+    m14D: [
+      "Enrutamiento dinámico", "Escenarios de falla", "Marcos de seguridad (CIA)",
+      "PKI y certificados", "DMZ", "Servicios de autenticación",
+      "Control de acceso a nivel de archivos", "Estrategias de respaldo", "Protección de línea base BSI"
+    ],
   },
   fa: {
     lang: "fa",
     heroBadge: "ماژول مبانی فناوری اطلاعات",
     heroTitle: "خوش آمدید به",
-    heroDesc: "آموزش تخصصی IT با تمرکز بر معماری سیستم، شبکه‌ها و منطق دیجیتال بر اساس برنامه درسی رسمی.",
-    btnPortfolio: "مشاهده برنامه آموزشی",
-    btnMindmap: "نقشه ذهنی",
-    portfolioSub: "ساختار ماژول: مبانی کامپیوتر و انگلیسی تخصصی",
+    heroDesc: "آموزش تخصصی IT با تمرکز بر معماری سیستم، شبکه و منطق دیجیتال. بر اساس برنامه درسی رسمی برای متخصصان IT.",
+    btnPortfolio: "مشاهده برنامه درسی",
+    btnMindmap: "طراحی نقشه ذهنی",
+    portfolioSub: "ساختار ماژول: مبانی کامپیوتر و انگلیسی فنی",
     label: "ماژول",
     m1T: "مقدمه و نمای کلی",
-    m1D: "موارد سازمانی، طرح‌های ارتباطی و مدل EVA/IPO.",
-    m2T: "سیستم‌های عددی و مدارهای منطقی",
-    m2D: "جبر بول، سیستم‌های باینری و هگزادسیمال.",
+    m1D: [
+      "امور سازمانی", "طرح ارتباطات", "«تصویر بزرگ» و کاربردها",
+      "موضوعات دوره مقدماتی", "نمای کلی سیستم کامپیوتری", "مدل EVA / IPO",
+      "مثال معماری کامپیوتر", "تحقیق مستقل", "تاریخچه آموزش و توسعه"
+    ],
+    m2T: "سیستم‌های اعداد و مدارهای منطقی",
+    m2D: [
+      "ارائه ها", "سیستم های اعداد", "جبر بول", 
+      "سیستم باینری (دودویی)", "سیستم هگزادسیمال", "تمرینات تکلیفی"
+    ],
     m3T: "پردازش سیگنال و دستگاه‌های IT",
-    m3D: "سیگنال‌های دیجیتال، کدها، نمادها و تجهیزات جانبی.",
+    m3D: [
+      "فرمت های اعداد", "پردازش سیگنال دیجیتال", "کدها، کاراکترها و نمادها",
+      "سیستم های IT (مدل EVA)", "دستگاه های ورودی و خروجی", "پردازش داده ها"
+    ],
     m4T: "قطعات کامپیوتر و منطق مدار",
-    m4D: "معماری فون نویمان، چرخه دستورالعمل و زبان اسمبلی.",
-    m5T: "مادربورد و رابط‌ها",
-    m5D: "پردازنده، بایوس، رم و اسلات‌های توسعه.",
+    m4D: [
+      "معماری فون نویمان", "چرخه دستورالعمل CPU", "مجموعه دستورالعمل ها", 
+      "زبان اسمبلی", "تمرینات محاسباتی", "منطق مدار دیجیتال"
+    ],
+    m5T: "مادربرد و رابط‌ها",
+    m5D: [
+      "رابط های خارجی کامپیوتر", "اسلات های توسعه داخلی", "مادربرد و CPU",
+      "ماژول های حافظه", "تراشه BIOS و RAM", "حافظه های ذخیره سازی (HDD/SSD)",
+      "تکلیف: ایجاد پیکربندی کامپیوتر"
+    ],
     m6T: "شبکه‌ها، پروتکل‌ها و استانداردها",
-    m6D: "مدل مرجع ISO/OSI، توپولوژی‌ها و اسنیفرهای شبکه.",
+    m6D: [
+      "پروتکل های شبکه", "مدل مرجع ISO/OSI", "اسنیفر شبکه",
+      "مثال: دسترسی به وب سایت", "توپولوژی های شبکه"
+    ],
     m7T: "سیستم‌های مجازی و رایانش ابری",
-    m7D: "هایپروایزرها، نصب سیستم‌عامل مهمان و سرویس‌های آپاچی.",
-    m8T: "آدرس‌دهی IP و زیرشبکه",
-    m8D: "ماسک‌های زیرشبکه، CIDR، آدرس‌های عمومی/خصوصی و IPv6.",
+    m7D: [
+      "هایپروایزر (Hypervisor)", "نصب سیستم عامل مهمان", "راه اندازی سرویس وب Apache",
+      "ماشین های مجازی ویندوز", "زیرساخت های ابری", "مثال Microsoft Azure"
+    ],
+    m8T: "آدرس‌دهی IP و ساب‌نتینگ",
+    m8D: [
+      "آدرس های IP و زیرشبکه ها", "شبکه های با کلاس", "ساب‌نت ماسک و CIDR",
+      "آدرس شبکه و برادکست", "آدرس های عمومی و خصوصی", "مسیرهای استاتیک",
+      "درگاه (Gateway) و مسیر پیش فرض", "روتر NAT", "IPv6 و راهکارهای تونل زنی"
+    ],
     m9T: "سخت‌افزار کامپیوتر و سرور",
-    m9D: "تفاوت بین کامپیوتر و سرور و مبانی مهندسی برق.",
+    m9D: [
+      "تفاوت بین کامپیوتر و سرور", "مبانی مهندسی برق"
+    ],
     m10T: "حافظه و سیستم‌های فایل",
-    m10D: "حافظه‌های فرار و غیرفرار، آرایه‌های RAID، NAS و SAN.",
+    m10D: [
+      "حافظه فرار و غیرفرار", "ROM، BIOS و RAM", "HDD و SSD",
+      "فایل ها و سیستم های فایل", "آرایه های RAID", "NAS و SAN", "فرآیندهای ذخیره سازی فیزیکی"
+    ],
     m11T: "سیستم‌های عامل",
-    m11D: "تعریف، وظایف، تاریخچه توسعه و نصب سیستم‌عامل.",
+    m11D: [
+      "تعریف و وظایف", "سیستم عامل های مختلف", "تاریخچه توسعه",
+      "ساختار و مبانی", "نصب و تحقیق آنلاین"
+    ],
     m12T: "ساختارهای داده و برنامه‌نویسی",
-    m12D: "مبانی برنامه‌نویسی، انواع برنامه‌ها و کدهای نمونه.",
+    m12D: [
+      "سیستم های داده و فایل", "فایل های برنامه", "مبانی برنامه نویسی",
+      "تمرینات عملی", "انواع برنامه ها", "کد نمونه"
+    ],
     m13T: "سرویس‌های شبکه و پایگاه داده",
-    m13D: "برنامه‌های کاربردی شبکه و تمرین در نرم‌افزار شبیه‌ساز.",
+    m13D: [
+      "برنامه های کاربردی شبکه", "نرم افزار شبیه سازی (Packet Tracer)", "تمرینات مبتنی بر سناریو"
+    ],
     m14T: "امنیت و در دسترس بودن بالا",
-    m14D: "مدل CIA، زیرساخت PKI، گواهینامه‌ها، DMZ و حفاظت BSI.",
+    m14D: [
+      "مسیریابی پویا", "سناریوهای شکست", "مدل امنیتی (CIA)",
+      "PKI و گواهینامه ها", "DMZ", "سرویس های احراز هویت",
+      "کنترل دسترسی در سطح فایل", "استراتژی های پشتیبان گیری", "حفاظت پایه BSI"
+    ],
   },
   ru: {
     lang: "ru",
-    heroBadge: "Модуль: Основы ИТ",
+    heroBadge: "Модуль основ ИТ",
     heroTitle: "Добро пожаловать в",
-    heroDesc:"Специализированное ИТ-обучение, сфокусированное на архитектуре систем, сетях и цифровой логике.",
-    btnPortfolio: "Учебный план",
-    btnMindmap: "Карта мыслей",
+    heroDesc: "Специализированное ИТ-обучение, ориентированное на архитектуру систем, сети и цифровую логику. На основе официальной учебной программы для ИТ-специалистов.",
+    btnPortfolio: "Посмотреть учебный план",
+    btnMindmap: "Дизайн интеллект-карты",
     portfolioSub: "Структура модуля: Основы ПК и технический английский",
     label: "Модуль",
     m1T: "Введение и обзор",
-    m1D: "Организационные вопросы, схемы связи и модель EVA/IPO.",
-    m2T: "Системы счисления и логика",
-    m2D: "Булева алгебра, двоичная и шестнадцатеричная системы.",
-    m3T: "Обработка сигналов и устройства",
-    m3D: "Цифровые сигналы, коды, символы и периферийные устройства.",
+    m1D: [
+      "Организационные вопросы", "Схема коммуникации", "«Общая картина» и приложения",
+      "Темы подготовительного курса", "Обзор компьютерной системы", "Модель EVA / IPO",
+      "Пример архитектуры ПК", "Самостоятельное исследование", "История образования и развития"
+    ],
+    m2T: "Системы счисления и логические схемы",
+    m2D: [
+      "Презентации", "Системы счисления", "Булева алгебра", 
+      "Двоичная система", "Шестнадцатеричная система", "Домашние задания"
+    ],
+    m3T: "Обработка сигналов и ИТ-устройства",
+    m3D: [
+      "Форматы чисел", "Цифровая обработка сигналов", "Коды, символы и знаки",
+      "ИТ-системы (модель EVA)", "Устройства ввода и вывода", "Обработка данных"
+    ],
     m4T: "Компоненты ПК и логика схем",
-    m4D: "Архитектура фон Неймана, циклы инструкций и язык ассемблера.",
+    m4D: [
+      "Архитектура фон Неймана", "Цикл инструкций ЦП", "Набор инструкций", 
+      "Язык ассемблера", "Вычислительные упражнения", "Логика цифровых схем"
+    ],
     m5T: "Материнская плата и интерфейсы",
-    m5D: "Процессор, BIOS, оперативная память и слоты расширения.",
+    m5D: [
+      "Внешние интерфейсы ПК", "Внутренние слоты расширения", "Материнская плата и ЦП",
+      "Модули памяти", "Чип BIOS и RAM", "Накопители (HDD/SSD)",
+      "Задание: Создание конфигурации ПК"
+    ],
     m6T: "Сети, протоколы и стандарты",
-    m6D: "Эталонная модель ISO/OSI, топологии и сетевые снифферы.",
-    m7T: "Виртуальные системы и облако",
-    m7D: "Гипервизоры, установка гостевых ОС и веб-сервисы Apache.",
+    m6D: [
+      "Сетевые протоколы", "Эталонная модель ISO/OSI", "Сетевой сниффер",
+      "Пример: Доступ к веб-сайту", "Топологии сети"
+    ],
+    m7T: "Виртуальные системы и облачные вычисления",
+    m7D: [
+      "Гипервизор", "Установка гостевой ОС", "Настройка веб-службы Apache",
+      "Windows VM", "Облачные инфраструктуры", "Пример Microsoft Azure"
+    ],
     m8T: "IP-адресация и подсети",
-    m8D: "Маски подсети, CIDR, публичные/частные адреса и IPv6.",
-    m9T: "Аппаратное обеспечение ПК и сервера",
-    m9D: "Различия между ПК и сервером, основы электротехники.",
+    m8D: [
+      "IP-адреса и подсети", "Классовые сети", "Маска подсети и CIDR",
+      "Адрес сети и широковещательный адрес", "Публичные и частные адреса", "Статические маршруты",
+      "Шлюз и маршрут по умолчанию", "NAT-роутер", "IPv6 и туннельные решения"
+    ],
+    m9T: "Оборудование ПК и серверов",
+    m9D: [
+      "Различия между ПК и сервером", "Основы электротехники"
+    ],
     m10T: "Память и файловые системы",
-    m10D: "Волатильная память, RAID-массивы, NAS и SAN технологии.",
+    m10D: [
+      "Энергозависимая и энергонезависимая память", "ROM, BIOS и RAM", "HDD и SSD",
+      "Файлы и файловые системы", "RAID-массивы", "NAS и SAN", "Физические процессы хранения"
+    ],
     m11T: "Операционные системы",
-    m11D: "Определение, задачи, история развития и установка.",
-    m12T: "Структуры данных и кодинг",
-    m12D: "Основы программирования, типы программ и примеры кода.",
+    m11D: [
+      "Определение и задачи", "Различные операционные системы", "История развития",
+      "Структура и основы", "Установка и онлайн-исследование"
+    ],
+    m12T: "Структуры данных и программирование",
+    m12D: [
+      "Системы данных и файлов", "Программные файлы", "Основы программирования",
+      "Практические упражнения", "Типы программ", "Пример кода"
+    ],
     m13T: "Сетевые службы и базы данных",
-    m13D: "Типовые приложения и практика в симуляторах (Packet Tracer).",
-    m14T: "Безопасность и доступность",
-    m14D: "Модель CIA, PKI, сертификаты, DMZ и защита BSI.",
-  },
+    m13D: [
+      "Типичные сетевые приложения", "ПО для симуляции (Packet Tracer)", "Упражнения на основе сценариев"
+    ],
+    m14T: "Безопасность и высокая доступность",
+    m14D: [
+      "Динамическая маршрутизация", "Сценарии сбоев", "Модель безопасности (CIA)",
+      "PKI и сертификаты", "DMZ", "Службы аутентификации",
+      "Контроль доступа на уровне файлов", "Стратегии резервного копирования", "Защита по стандартам BSI"
+    ],
+  }
 };
