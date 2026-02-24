@@ -6,33 +6,29 @@ const urlPath = Astro.url.pathname;
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 
-// 1. Lógica para detectar el idioma y el sub-camino actual
 const segments = urlPath.replace(base, '').split('/').filter(Boolean);
-// El primer segmento después de la base suele ser el idioma (es, de, en...)
 const urlLang = segments[0]; 
 const lang = propLang || urlLang || "de"; 
 
-// 2. Capturamos todo lo que viene DESPUÉS del idioma
-// Si la URL es /base/es/modul-1, currentSubPath será 'modul-1'
 const currentSubPath = segments.slice(1).join('/');
 
 const languages = [
-  { code: "de", label: "Deutsch", flag: "🇩🇪" },
-  { code: "es", label: "Español", flag: "🇪🇸" },
-  { code: "en", label: "English", flag: "🇺🇸" },
-  { code: "fa", label: "فارسی", flag: "🇮🇷", dir: "rtl" },
-  { code: "ru", label: "Русский", flag: "🇷🇺" },
+  { code: "de", label: "Deutsch" },
+  { code: "es", label: "Español" },
+  { code: "en", label: "English" },
+  { code: "fa", label: "فارسی", dir: "rtl" },
+  { code: "ru", label: "Русский" },
 ];
 
 const activeLangCode = languages.some(l => l.code === lang) ? lang : "de";
 const currentLang = languages.find((l) => l.code === activeLangCode);
 
 const t = {
-  es: { home: "Inicio", modules: "Módulos", mindmap: "Contacto", current: "Actual" },
-  en: { home: "Home", modules: "Modules", mindmap: "Contact", current: "Current" },
-  de: { home: "Start", modules: "Module", mindmap: "Kontakt", current: "Aktiv" },
-  ru: { home: "Главная", modules: "Модули", mindmap: "Контакты", current: "Тек." },
-  fa: { home: "صفحه اصلی", modules: "ماژول‌ها", mindmap: "تماس", current: "فعلی" }
+  es: { home: "Inicio", modules: "Módulos", contact: "Contacto", current: "Actual" },
+  en: { home: "Home", modules: "Modules", contact: "Contact", current: "Current" },
+  de: { home: "Start", modules: "Module", contact: "Kontakt", current: "Aktiv" },
+  ru: { home: "Главная", modules: "Модули", contact: "Контакты", current: "Тек." },
+  fa: { home: "صفحه اصلی", modules: "ماژول‌ها", contact: "تماس", current: "فعلی" }
 };
 
 const nav = t[activeLangCode];
@@ -42,7 +38,7 @@ const nav = t[activeLangCode];
   <div class="max-w-5xl mx-auto px-4">
     <div class="flex justify-between h-16 items-center">
       
-      <a href={`${base}${activeLangCode}/`} class="font-black text-2xl text-blue-600 tracking-tighter">
+      <a href={`${base}${activeLangCode}/`} class="font-black text-2xl text-blue-600 tracking-tighter font-archivo">
         BEBE<span class="text-gray-800">CUTE</span>
       </a>
 
@@ -54,8 +50,8 @@ const nav = t[activeLangCode];
           <a href={`${base}${activeLangCode}/#portfolio`} class="text-sm md:text-base font-bold text-gray-600 hover:text-purple-600 transition-colors tracking-tight">
             {nav.modules}
           </a>
-          <a href={`${base}${activeLangCode}/#mindmap`} class="text-sm md:text-base font-bold text-gray-600 hover:text-purple-600 transition-colors tracking-tight">
-            {nav.mindmap}
+          <a href={`${base}${activeLangCode}/#contact`} class="text-sm md:text-base font-bold text-gray-600 hover:text-purple-600 transition-colors tracking-tight">
+            {nav.contact}
           </a>
         </div>
 
@@ -72,14 +68,19 @@ const nav = t[activeLangCode];
           <div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-44 md:w-52 bg-white border border-gray-100 rounded-2xl shadow-xl overflow-hidden ring-1 ring-black ring-opacity-5 animate-in fade-in zoom-in-95 duration-100">
             {languages.map((l) => {
               const isActive = l.code === activeLangCode;
-              // 3. CONSTRUCCIÓN DEL ENLACE DINÁMICO
-              // Concatenamos base + nuevo idioma + sub-camino actual
               const targetUrl = `${base}${l.code}/${currentSubPath}`;
               
               return (
                 <a 
-                  href={targetUrl} 
-                  class={`flex items-center justify-between px-4 py-3.5 text-sm transition-all border-b border-gray-50 last:border-0 ${isActive ? 'bg-purple-50 text-purple-700 font-bold' : 'text-gray-600 hover:bg-gray-50'}`}
+                  href={isActive ? "#" : targetUrl}
+                  data-lang-code={l.code}
+                  class:list={[
+                    "lang-link flex items-center justify-between px-4 py-3.5 text-sm transition-all border-b border-gray-50 last:border-0",
+                    {
+                      "bg-purple-50 text-purple-700 font-bold pointer-events-none": isActive,
+                      "text-gray-600 hover:bg-gray-50": !isActive
+                    }
+                  ]}
                   dir={l.dir || 'ltr'}
                 >
                   <div class="flex items-center gap-3">
@@ -101,14 +102,21 @@ const nav = t[activeLangCode];
   </div>
 </nav>
 
-<script>
-  const initNav = () => {
+<script is:inline>
+  const updateLangLinks = () => {
     const btn = document.getElementById("lang-menu-btn");
     const dropdown = document.getElementById("lang-dropdown");
-    
+    const langLinks = document.querySelectorAll(".lang-link");
+
     btn?.addEventListener("click", (e) => {
       e.stopPropagation();
       dropdown?.classList.toggle("hidden");
+      
+      const currentHash = window.location.hash;
+      langLinks.forEach(link => {
+        const originalHref = link.getAttribute('href').split('#')[0];
+        link.setAttribute('href', originalHref + currentHash);
+      });
     });
 
     document.addEventListener("click", () => {
@@ -116,6 +124,11 @@ const nav = t[activeLangCode];
     });
   };
 
-  initNav();
-  document.addEventListener('astro:after-swap', initNav);
+  updateLangLinks();
+  document.addEventListener('astro:after-swap', updateLangLinks);
 </script>
+
+<style>
+  .font-archivo { font-family: 'Archivo', sans-serif; }
+  .font-inter { font-family: 'Inter', sans-serif; }
+</style>

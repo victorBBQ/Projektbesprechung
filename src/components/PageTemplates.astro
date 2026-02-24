@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import CareerCard from '../components/CareerCard.astro';
+import CareerCard from './CareerCard.astro';
+import ContactForm from './ContactForm.astro'
 
 
 const { nav } = Astro.props;
@@ -30,7 +31,7 @@ const careerModules = [
       </p>
 
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="#mindmap" class="px-8 py-4 bg-white text-gray-700 border border-gray-200 font-bold rounded-2xl hover:bg-gray-50 transition-all">
+        <a href="#contact" class="px-8 py-4 bg-white text-gray-700 border border-gray-200 font-bold rounded-2xl hover:bg-gray-50 transition-all">
           {nav.btnMindmap}
         </a>
       </div>
@@ -61,11 +62,19 @@ const careerModules = [
     </div>
   </section>
 
-<section id="mindmap" class="py-20 min-h-screen flex flex-col justify-center items-center bg-white">
-  <div class="max-w-6xl mx-auto px-4 text-center">
-    <h2 class="text-3xl font-bold mb-8 italic">
-      MINDMAP <span class="text-blue-600">BEBECUTE</span>
-    </h2>
+<section id="contact" class="py-24 bg-white border-t-4 border-black font-inter">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-5xl md:text-5xl font-black italic text-gray-900 tracking-tighter uppercase leading-none">
+        {nav.btnMindmap} <span class="text-blue-600">BEBECUTE</span>
+      </h2>
+    </div>
+
+    <div class= "gap-16 items-start">
+      <div class="relative">
+        <ContactForm nav={nav} />
+      </div>
+    </div>
   </div>
 </section>
 </Layout>

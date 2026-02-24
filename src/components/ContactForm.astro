@@ -1,0 +1,48 @@
+---
+const { nav } = Astro.props;
+
+const t = {
+  es: { name: "Nombre", email: "Correo", msg: "Mensaje", send: "Enviar Mensaje" },
+  en: { name: "Name", email: "Email", msg: "Message", send: "Send Message" },
+  de: { name: "Name", email: "E-Mail", msg: "Nachricht", send: "Nachricht senden" },
+  fa: { name: "نام", email: "ایمیل", msg: "پیام", send: "ارسال پیام" },
+  ru: { name: "Имя", email: "Email", msg: "Сообщение", send: "Отправить" }
+};
+
+const formNav = t[nav.lang] || t.de;
+---
+
+<form class="flex flex-col gap-4 w-full max-w-md mx-auto font-inter">
+  <div class="flex flex-col gap-1">
+    <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-4">{formNav.name}</label>
+    <input 
+      type="text" 
+      placeholder="BEBE CUTE" 
+      class="border-4 border-black rounded-2xl p-4 bg-white shadow-[4px_4px_0px_#000] focus:translate-x-1 focus:translate-y-1 focus:shadow-none transition-all outline-none font-bold"
+    />
+  </div>
+
+  <div class="flex flex-col gap-1">
+    <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-4">{formNav.email}</label>
+    <input 
+      type="email" 
+      placeholder="hallo@bebecute.de" 
+      class="border-4 border-black rounded-2xl p-4 bg-white shadow-[4px_4px_0px_#000] focus:translate-x-1 focus:translate-y-1 focus:shadow-none transition-all outline-none font-bold"
+    />
+  </div>
+
+  <div class="flex flex-col gap-1">
+    <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-4">{formNav.msg}</label>
+    <textarea 
+      rows="4" 
+      class="border-4 border-black rounded-3xl p-4 bg-white shadow-[4px_4px_0px_#000] focus:translate-x-1 focus:translate-y-1 focus:shadow-none transition-all outline-none font-bold resize-none"
+    ></textarea>
+  </div>
+
+  <button 
+    type="submit" 
+    class="mt-4 bg-purple-600 text-white font-black py-4 rounded-2xl border-4 border-black shadow-[6px_6px_0px_#000] hover:bg-black transition-all uppercase italic tracking-tighter text-lg active:translate-x-1 active:translate-y-1 active:shadow-none"
+  >
+    {formNav.send}
+  </button>
+</form>
