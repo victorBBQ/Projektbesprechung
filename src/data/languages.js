@@ -1,7 +1,7 @@
 export const languages = {
   de: {
     lang: "de",
-    heroBadge: "IT-Grundlagen Modul",
+    heroBadge: "Curriculum & IT-Lernpfad",
     heroTitle: "Willkommen bei",
     heroDesc: "Spezialisierte IT-Schulung mit Fokus auf Systemarchitektur, Vernetzung und digitale Logik. Basierend auf dem offiziellen Lehrplan für Fachinformatiker.",
     btnPortfolio: "Lehrplan ansehen",
@@ -99,7 +99,7 @@ export const languages = {
   },
   en: {
     lang: "en",
-    heroBadge: "IT Fundamentals Module",
+    heroBadge: "Full IT Curriculum & Learning Path",
     heroTitle: "Welcome to",
     heroDesc: "Specialized IT training focused on system architecture, networking, and digital logic. Based on the official curriculum for IT Specialists.",
     btnPortfolio: "View Curriculum",
@@ -197,7 +197,7 @@ export const languages = {
   },
   es: {
     lang: "es",
-    heroBadge: "Módulo de Fundamentos de TI",
+    heroBadge: "Plan de Estudios y Ruta de Aprendizaje IT",
     heroTitle: "Bienvenido a",
     heroDesc: "Formación especializada en TI centrada en arquitectura de sistemas, redes y lógica digital. Basado en el plan de estudios oficial para Especialistas en TI.",
     btnPortfolio: "Ver Currículum",
@@ -293,10 +293,10 @@ export const languages = {
     c9: "Instrucción Técnica: Integración de Sistemas (540 UE)",
     c10: "Preparación para el Examen (531 UE)",
   },
-fa: {
+  fa: {
     lang: "fa",
     heroBadge: "ماژول مبانی فناوری اطلاعات",
-    heroTitle: "خوش آمدید به",
+    heroTitle: "نمای کلی مسیر شغلی IT شما",
     heroDesc: "آموزش تخصصی IT با تمرکز بر معماری سیستم، شبکه و منطق دیجیتال. بر اساس برنامه درسی رسمی برای متخصصان IT.",
     btnPortfolio: "مشاهده برنامه درسی",
     btnMindmap: "تماس با ما",
@@ -347,10 +347,10 @@ fa: {
     c9: "آموزش تخصصی یکپارچه سازی سیستم (۵۴۰ واحد)",
     c10: "آمادگی برای امتحان (۵۳۱ واحد)",
   },
-ru: {
+  ru: {
     lang: "ru",
     heroBadge: "Модуль основ ИТ",
-    heroTitle: "Добро пожаловать в",
+    heroTitle: "Обзор вашей ИТ-карьеры",
     heroDesc: "Специализированное ИТ-обучение, ориентированное на архитектуру систем, сети и цифровую логику. На основе официальной учебной программы для ИТ-специалистов.",
     btnPortfolio: "Посмотреть учебный план",
     btnMindmap: "Связаться с нами",
