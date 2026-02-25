@@ -128,7 +128,6 @@ const modulesData = Array.from({ length: 14 }, (_, i) => {
     function openModal(data: any) {
       if (!modal || !modalContent) return;
 
-      // Inyectar Datos
       document.getElementById("modal-title")!.innerText = data.title;
       document.getElementById("modal-label")!.innerText =
         `${data.label} ${data.num}`;
@@ -153,7 +152,6 @@ const modulesData = Array.from({ length: 14 }, (_, i) => {
         descContainer.innerHTML = `<p>${descData}</p>`;
       }
 
-      // Mostrar Modal
       modal.classList.remove("hidden");
       modal.classList.add("flex");
       setTimeout(() => {

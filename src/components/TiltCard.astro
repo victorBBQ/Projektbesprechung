@@ -57,7 +57,7 @@ const {
 
 <style>
 :root {
-  font-family: 'Inter', sans-serif; /* Fuente base para todo */
+  font-family: 'Inter', sans-serif;
 }
 
 .big-number {
@@ -73,7 +73,7 @@ const {
 .title-reveal { 
   font-family: 'Inter', sans-serif;
   color: white; 
-  font-weight: 800; /* Extra bold pero no black para que no se empaste */
+  font-weight: 800;
   font-size: 1.1rem; 
   line-height: 1.2; 
   margin-bottom: 0.5rem;
@@ -81,12 +81,11 @@ const {
   letter-spacing: -0.02em;
 }
 
-/* El texto del modal o pequeñas listas */
 .desc-reveal, li {
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   letter-spacing: 0.01em;
-  line-height: 1.4; /* Más espacio entre líneas para leer mejor en alemán */
+  line-height: 1.4;
 }
   .container-tilt {
     position: relative;
@@ -120,7 +119,6 @@ const {
 
   .tracker { position: relative; z-index: 20; width: 100%; height: 100%; }
 
-  /* Rotaciones originales */
   .tr-1:hover ~ #card { transform: rotateX(15deg) rotateY(-10deg); }
   .tr-2:hover ~ #card { transform: rotateX(15deg) rotateY(-5deg); }
   .tr-3:hover ~ #card { transform: rotateX(15deg) rotateY(0deg); }
